@@ -27,11 +27,12 @@ export function BackToTop() {
       aria-label="Back to top"
       onClick={scrollToTop}
       className={cn(
-        'fixed bottom-6 right-6 z-30 inline-flex size-11 items-center justify-center rounded-full border border-zinc-200/80 bg-white/75 text-foreground shadow-sm backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-300 dark:border-white/10 dark:bg-[#211b15]/75 dark:text-[#f5efe7] dark:hover:bg-[#2a2119] dark:focus-visible:ring-[#c49a6c]',
+        'fixed bottom-6 right-6 z-30 inline-flex size-11 items-center justify-center rounded-full border border-zinc-200/80 bg-white/75 text-foreground shadow-sm backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-300 dark:border-white/10 dark:bg-[#34302a]/75 dark:text-[#f6efe5] dark:hover:bg-[#3d372f] dark:focus-visible:ring-[#b99572]',
         isVisible ? 'translate-y-0 opacity-100' : 'pointer-events-none translate-y-3 opacity-0'
       )}>
       <ArrowUp className="size-4" />
     </button>
   )
 }
+
 

@@ -8,17 +8,50 @@ import { HeroHeader } from './header'
 import { ChevronRight } from 'lucide-react'
 import Image from 'next/image'
 
+
+function TypewriterTitle({ text }: { text: string }) {
+    const [visibleCount, setVisibleCount] = React.useState(0)
+
+    React.useEffect(() => {
+        const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+
+        if (reduceMotion) {
+            setVisibleCount(text.length)
+            return
+        }
+
+        setVisibleCount(0)
+        const timers = Array.from(text).map((_, index) =>
+            window.setTimeout(() => setVisibleCount(index + 1), (index + 1) * 60)
+        )
+
+        return () => timers.forEach((timer) => window.clearTimeout(timer))
+    }, [text])
+
+    return (
+        <>
+            <span className="block sm:inline" aria-hidden="true">
+                {text.slice(0, Math.min(9, visibleCount))}
+            </span>
+            <span className="block sm:ml-3 sm:inline" aria-hidden="true">
+                {text.slice(10, visibleCount)}
+            </span>
+            <span className="hero-type-cursor inline-block align-baseline" aria-hidden="true" />
+            <span className="sr-only">{text}</span>
+        </>
+    )
+}
 const skills = [
-    { name: 'Java', position: 'sm:left-[20%] sm:top-3 lg:left-[18%] lg:top-4', emphasis: '' },
-    { name: 'Spring Boot', position: 'sm:left-1/2 sm:top-0 sm:-translate-x-1/2 lg:top-0', emphasis: '' },
-    { name: 'MySQL', position: 'sm:right-[20%] sm:top-3 lg:right-[18%] lg:top-4', emphasis: '' },
-    { name: 'Redis', position: 'sm:left-[15%] sm:top-[86px] lg:left-[11%] lg:top-[110px]', emphasis: '' },
-    { name: 'RabbitMQ', position: 'sm:left-1/2 sm:top-[92px] sm:-translate-x-1/2 lg:top-[122px]', emphasis: '' },
-    { name: 'Docker', position: 'sm:right-[15%] sm:top-[86px] lg:right-[11%] lg:top-[110px]', emphasis: '' },
-    { name: 'Linux', position: 'sm:left-[24%] sm:top-[176px] lg:left-[21%] lg:top-[230px]', emphasis: '' },
-    { name: 'Git', position: 'sm:left-1/2 sm:top-[166px] sm:-translate-x-1/2 lg:top-[215px]', emphasis: '' },
-    { name: 'Vue', position: 'sm:right-[24%] sm:top-[176px] lg:right-[21%] lg:top-[230px]', emphasis: '' },
-    { name: 'AI / LLM', position: 'sm:left-1/2 sm:top-[240px] sm:-translate-x-1/2 lg:top-[315px]', emphasis: '' },
+    { name: 'Java', position: 'sm:left-[20%] sm:top-3 lg:left-[18%] lg:top-4', emphasis: '', floatDelay: '0ms', floatDistance: '6px', floatDuration: '3.2s' },
+    { name: 'Spring Boot', position: 'sm:left-1/2 sm:top-0 sm:-translate-x-1/2 lg:top-0', emphasis: '', floatDelay: '260ms', floatDistance: '8px', floatDuration: '3.7s' },
+    { name: 'MySQL', position: 'sm:right-[20%] sm:top-3 lg:right-[18%] lg:top-4', emphasis: '', floatDelay: '520ms', floatDistance: '7px', floatDuration: '3.4s' },
+    { name: 'Redis', position: 'sm:left-[15%] sm:top-[86px] lg:left-[11%] lg:top-[110px]', emphasis: '', floatDelay: '760ms', floatDistance: '6px', floatDuration: '3.9s' },
+    { name: 'RabbitMQ', position: 'sm:left-1/2 sm:top-[92px] sm:-translate-x-1/2 lg:top-[122px]', emphasis: '', floatDelay: '340ms', floatDistance: '8px', floatDuration: '3.5s' },
+    { name: 'Docker', position: 'sm:right-[15%] sm:top-[86px] lg:right-[11%] lg:top-[110px]', emphasis: '', floatDelay: '620ms', floatDistance: '7px', floatDuration: '4s' },
+    { name: 'Linux', position: 'sm:left-[24%] sm:top-[176px] lg:left-[21%] lg:top-[230px]', emphasis: '', floatDelay: '180ms', floatDistance: '6px', floatDuration: '3.6s' },
+    { name: 'Git', position: 'sm:left-1/2 sm:top-[166px] sm:-translate-x-1/2 lg:top-[215px]', emphasis: '', floatDelay: '480ms', floatDistance: '7px', floatDuration: '3.3s' },
+    { name: 'Vue', position: 'sm:right-[24%] sm:top-[176px] lg:right-[21%] lg:top-[230px]', emphasis: '', floatDelay: '700ms', floatDistance: '6px', floatDuration: '3.8s' },
+    { name: 'AI / LLM', position: 'sm:left-1/2 sm:top-[240px] sm:-translate-x-1/2 lg:top-[315px]', emphasis: '', floatDelay: '420ms', floatDistance: '8px', floatDuration: '4s' },
 ]
 
 export default function HeroSection() {
@@ -37,7 +70,7 @@ export default function HeroSection() {
             <main className="overflow-hidden">
                 <section>
                     <div className="relative flex min-h-screen items-center py-20 md:py-32">
-                        <div className="mask-radial-from-45% mask-radial-to-75% mask-radial-at-top mask-radial-[75%_100%] mask-t-from-50% lg:aspect-9/4 absolute inset-0 aspect-square lg:top-24 opacity-80 dark:opacity-20">
+                        <div className="mask-radial-from-45% mask-radial-to-75% mask-radial-at-top mask-radial-[75%_100%] mask-t-from-50% lg:aspect-9/4 absolute inset-0 aspect-square lg:top-24 opacity-80 dark:opacity-12">
                             <Image
                                 src="https://images.unsplash.com/photo-1740516367177-ae20098c8786?q=80&w=2268&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                                 alt="hero background"
@@ -48,9 +81,8 @@ export default function HeroSection() {
                         </div>
                         <div className="relative z-10 mx-auto w-full max-w-7xl px-5 sm:px-6">
                             <div className="mx-auto max-w-4xl text-center">
-                                <h1 className={`font-serif text-3xl font-medium leading-tight transition-all duration-700 ease-out sm:whitespace-nowrap sm:text-4xl sm:leading-none md:text-5xl lg:text-6xl xl:text-7xl ${revealClass}`}>
-                                    <span className="block sm:inline">Hey, I am</span>
-                                    <span className="block sm:ml-3 sm:inline">TianZhiJiu</span>
+                                <h1 className="font-serif text-3xl font-medium leading-tight sm:whitespace-nowrap sm:text-4xl sm:leading-none md:text-5xl lg:text-6xl xl:text-7xl">
+                                    <TypewriterTitle text="Hey, I am TianZhiJiu" />
                                 </h1>
                                 <p className={`text-muted-foreground mx-auto mt-7 max-w-2xl text-balance text-base leading-8 transition-all delay-150 duration-700 ease-out sm:text-lg sm:leading-9 md:text-xl lg:max-w-3xl lg:text-2xl lg:leading-10 ${revealClass}`}>I build thoughtful backend systems, AI-powered tools, and web experiences with clarity and purpose.</p>
 
@@ -63,11 +95,12 @@ export default function HeroSection() {
                                     </Link>
                                 </Button>
                             </div>
-                            <div className={`relative mx-auto mt-10 flex h-[300px] w-full max-w-5xl flex-wrap content-start justify-center gap-2 overflow-hidden transition-all delay-500 duration-700 ease-out sm:mt-14 sm:block sm:h-[300px] md:h-[320px] lg:mt-20 lg:h-[390px] lg:max-w-6xl ${revealClass}`}>
+                            <div className={`relative mx-auto mt-10 flex h-[300px] w-full max-w-5xl flex-wrap content-start justify-center gap-2 overflow-visible pt-6 transition-all delay-500 duration-700 ease-out sm:mt-14 sm:block sm:h-[300px] md:h-[320px] lg:mt-20 lg:h-[390px] lg:max-w-6xl ${revealClass}`}>
                                 {skills.map((skill) => (
                                     <Card
                                         key={skill.name}
-                                        className={`flex h-9 items-center justify-center rounded-full border border-zinc-200/80 bg-white/70 px-4 text-zinc-800 shadow-sm backdrop-blur-sm dark:border-white/10 dark:bg-[#211b15]/75 dark:text-[#f5efe7] transition-all duration-300 hover:-translate-y-1 hover:shadow-md sm:absolute sm:h-11 sm:px-5 md:h-12 md:px-6 lg:h-14 lg:px-8 ${skill.position} ${skill.emphasis}`}>
+                                        style={{ '--float-delay': skill.floatDelay, '--float-distance': skill.floatDistance, '--float-duration': skill.floatDuration } as React.CSSProperties}
+                                        className={`hero-skill-float flex h-9 items-center justify-center rounded-full border border-zinc-200/80 bg-white/70 px-4 text-zinc-800 shadow-sm backdrop-blur-sm dark:border-white/10 dark:bg-[#34302a]/85 dark:text-[#f6efe5] transition-all duration-300 hover:-translate-y-1 hover:shadow-md sm:absolute sm:h-11 sm:px-5 md:h-12 md:px-6 lg:h-14 lg:px-8 ${skill.position} ${skill.emphasis}`}>
                                         <span className="text-nowrap text-center font-serif text-xs font-medium leading-none sm:text-base md:text-lg lg:text-xl">{skill.name}</span>
                                     </Card>
                                 ))}
@@ -79,6 +112,11 @@ export default function HeroSection() {
         </>
     )
 }
+
+
+
+
+
 
 
 

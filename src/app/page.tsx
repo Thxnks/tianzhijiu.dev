@@ -89,7 +89,7 @@ export default function Home() {
                     {project.stack.map((tech) => (
                       <span
                         key={tech}
-                        className="rounded-full border border-zinc-200/80 bg-white/70 px-2.5 py-1 font-serif text-xs text-muted-foreground shadow-sm dark:border-white/10 dark:bg-[#211b15]/75 dark:text-[#b9aca0]">
+                        className="rounded-full border border-zinc-200/80 bg-white/70 px-2.5 py-1 font-serif text-xs text-muted-foreground shadow-sm dark:border-white/10 dark:bg-[#34302a]/75 dark:text-[#c8baaa]">
                         {tech}
                       </span>
                     ))}
@@ -99,7 +99,7 @@ export default function Home() {
                       href={project.github}
                       target="_blank"
                       rel="noreferrer"
-                      className="inline-flex h-8 items-center justify-center rounded-full border border-zinc-200/80 bg-white/70 px-3.5 font-serif text-xs font-medium text-foreground shadow-sm transition-transform duration-300 group-hover:-translate-y-0.5 dark:border-white/10 dark:bg-[#211b15]/75 dark:text-[#f5efe7] dark:hover:bg-[#2a2119]">
+                      className="inline-flex h-8 items-center justify-center rounded-full border border-zinc-200/80 bg-white/70 px-3.5 font-serif text-xs font-medium text-foreground shadow-sm transition-transform duration-300 group-hover:-translate-y-0.5 dark:border-white/10 dark:bg-[#34302a]/75 dark:text-[#f6efe5] dark:hover:bg-[#3d372f]">
                       GitHub
                     </a>
                   </div>
@@ -124,7 +124,7 @@ export default function Home() {
                   {group.skills.map((skill) => (
                     <span
                       key={skill}
-                      className="rounded-full border border-zinc-200/80 bg-white/70 px-3.5 py-1.5 font-serif text-sm text-muted-foreground shadow-sm dark:border-white/10 dark:bg-[#211b15]/75 dark:text-[#b9aca0]">
+                      className="rounded-full border border-zinc-200/80 bg-white/70 px-3.5 py-1.5 font-serif text-sm text-muted-foreground shadow-sm dark:border-white/10 dark:bg-[#34302a]/75 dark:text-[#c8baaa]">
                       {skill}
                     </span>
                   ))}
@@ -158,10 +158,10 @@ export default function Home() {
                   {item.time}
                 </div>
                 <div className="relative flex justify-center">
-                  <span className="mt-1.5 size-2 rounded-full border border-zinc-300 bg-background shadow-sm dark:border-white/20 dark:bg-[#17130f]" />
+                  <span className="mt-1.5 size-2 rounded-full border border-zinc-300 bg-background shadow-sm dark:border-white/20 dark:bg-[#24211d]" />
                   {index < journeyItems.length - 1 ? <span className="absolute top-4 h-full w-px bg-zinc-200 dark:bg-white/10" /> : null}
                 </div>
-                <article className="mb-3 rounded-xl border border-zinc-200/80 bg-white/70 p-3 shadow-sm backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-zinc-300 hover:bg-white hover:shadow-md dark:border-white/10 dark:bg-[#211b15]/75 dark:hover:border-white/20 dark:hover:bg-[#2a2119] md:p-4">
+                <article className="mb-3 rounded-xl border border-zinc-200/80 bg-white/70 p-3 shadow-sm backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-zinc-300 hover:bg-white hover:shadow-md dark:border-white/10 dark:bg-[#34302a]/75 dark:hover:border-white/20 dark:hover:bg-[#3d372f] md:p-4">
                   <h3 className="font-serif text-base font-medium md:text-lg">{item.title}</h3>
                   <p className="mt-1.5 text-xs text-muted-foreground md:text-sm">{item.description}</p>
                 </article>
@@ -181,20 +181,20 @@ export default function Home() {
           <div data-reveal style={{ '--reveal-delay': '360ms' } as CSSProperties} className="mt-8 flex max-w-3xl flex-wrap gap-3">
             <a
               href="mailto:thxnks97@gmail.com"
-              className="inline-flex h-11 items-center justify-center rounded-full border border-zinc-200/80 bg-white/70 px-5 font-serif text-sm font-medium text-foreground shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md dark:border-white/10 dark:bg-[#211b15]/75 dark:text-[#f5efe7] dark:hover:bg-[#2a2119]">
+              className="inline-flex h-11 items-center justify-center rounded-full border border-zinc-200/80 bg-white/70 px-5 font-serif text-sm font-medium text-foreground shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md dark:border-white/10 dark:bg-[#34302a]/75 dark:text-[#f6efe5] dark:hover:bg-[#3d372f]">
               Email Me
             </a>
             <a
               href="https://github.com/Thxnks"
               target="_blank"
               rel="noreferrer"
-              className="inline-flex h-11 items-center justify-center rounded-full border border-zinc-200/80 bg-white/70 px-5 font-serif text-sm font-medium text-foreground shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md dark:border-white/10 dark:bg-[#211b15]/75 dark:text-[#f5efe7] dark:hover:bg-[#2a2119]">
+              className="inline-flex h-11 items-center justify-center rounded-full border border-zinc-200/80 bg-white/70 px-5 font-serif text-sm font-medium text-foreground shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md dark:border-white/10 dark:bg-[#34302a]/75 dark:text-[#f6efe5] dark:hover:bg-[#3d372f]">
               GitHub
             </a>
             <a
               href="/resume.pdf"
               download
-              className="inline-flex h-11 items-center justify-center rounded-full border border-zinc-200/80 bg-white/70 px-5 font-serif text-sm font-medium text-foreground shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md dark:border-white/10 dark:bg-[#211b15]/75 dark:text-[#f5efe7] dark:hover:bg-[#2a2119]">
+              className="inline-flex h-11 items-center justify-center rounded-full border border-zinc-200/80 bg-white/70 px-5 font-serif text-sm font-medium text-foreground shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md dark:border-white/10 dark:bg-[#34302a]/75 dark:text-[#f6efe5] dark:hover:bg-[#3d372f]">
               Download Resume
             </a>
           </div>
@@ -204,5 +204,6 @@ export default function Home() {
     </div>
   )
 }
+
 
 
