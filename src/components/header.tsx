@@ -3,17 +3,19 @@
 import React from 'react'
 import Link from 'next/link'
 import { Menu, Moon, Sun, X } from 'lucide-react'
+import { useLanguage } from '@/components/language-provider'
 import { cn } from '@/lib/utils'
 
 const menuItems = [
-    { name: 'Projects', href: '#projects', id: 'projects' },
-    { name: 'Skills', href: '#skills', id: 'skills' },
-    { name: 'About', href: '#about', id: 'about' },
-    { name: 'Journey', href: '#journey', id: 'journey' },
-    { name: 'Contact', href: '#contact', id: 'contact' },
-]
+    { key: 'projects', href: '#projects', id: 'projects' },
+    { key: 'skills', href: '#skills', id: 'skills' },
+    { key: 'about', href: '#about', id: 'about' },
+    { key: 'journey', href: '#journey', id: 'journey' },
+    { key: 'contact', href: '#contact', id: 'contact' },
+] as const
 
 export const HeroHeader = () => {
+    const { t, toggleLanguage } = useLanguage()
     const [menuState, setMenuState] = React.useState(false)
     const [isScrolled, setIsScrolled] = React.useState(false)
     const [activeSection, setActiveSection] = React.useState('')
@@ -72,17 +74,26 @@ export const HeroHeader = () => {
         window.localStorage.setItem('theme', nextTheme)
     }
 
+    const controlClassName = 'inline-flex size-10 items-center justify-center rounded-full border border-zinc-200/80 bg-white/70 text-foreground shadow-sm backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 hover:bg-white dark:border-white/10 dark:bg-[#34302a]/75 dark:text-[#f6efe5] dark:hover:bg-[#3d372f]'
+
     const ThemeToggle = ({ className }: { className?: string }) => (
         <button
             type="button"
             aria-label="Toggle theme"
             onClick={toggleTheme}
-            className={cn(
-                'inline-flex size-10 items-center justify-center rounded-full border border-zinc-200/80 bg-white/70 text-foreground shadow-sm backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 hover:bg-white dark:border-white/10 dark:bg-[#34302a]/75 dark:text-[#f6efe5] dark:hover:bg-[#3d372f]',
-                className
-            )}>
+            className={cn(controlClassName, className)}>
             <Sun className="size-4 rotate-0 scale-100 transition-all duration-300 dark:-rotate-90 dark:scale-0" />
             <Moon className="absolute size-4 rotate-90 scale-0 transition-all duration-300 dark:rotate-0 dark:scale-100" />
+        </button>
+    )
+
+    const LanguageToggle = ({ className }: { className?: string }) => (
+        <button
+            type="button"
+            aria-label="Toggle language"
+            onClick={toggleLanguage}
+            className={cn(controlClassName, 'w-auto px-3 font-serif text-sm font-medium', className)}>
+            {t.languageLabel}
         </button>
     )
 
@@ -104,7 +115,10 @@ export const HeroHeader = () => {
                                 <Menu className="in-data-[state=active]:rotate-180 in-data-[state=active]:scale-0 in-data-[state=active]:opacity-0 m-auto size-6 duration-200" />
                                 <X className="in-data-[state=active]:rotate-0 in-data-[state=active]:scale-100 in-data-[state=active]:opacity-100 absolute inset-0 m-auto size-6 -rotate-180 scale-0 opacity-0 duration-200" />
                             </button>
-                            <ThemeToggle className="lg:hidden" />
+                            <div className="flex items-center gap-2 lg:hidden">
+                                <LanguageToggle />
+                                <ThemeToggle />
+                            </div>
                         </div>
 
                         <div className="absolute left-1/2 top-1/2 hidden -translate-x-1/2 -translate-y-1/2 lg:block">
@@ -117,10 +131,10 @@ export const HeroHeader = () => {
                                             <Link
                                                 href={item.href}
                                                 className={cn(
-                                                    'relative px-1 py-2 font-serif text-lg text-muted-foreground transition-colors duration-200 after:absolute after:left-0 after:top-full after:h-px after:w-full after:origin-center after:scale-x-0 after:bg-foreground after:transition-transform after:duration-200 hover:text-foreground dark:after:bg-[#b99572]',
+                                                    'relative px-1 py-2 font-serif text-xl text-muted-foreground transition-colors duration-200 after:absolute after:left-0 after:top-full after:h-px after:w-full after:origin-center after:scale-x-0 after:bg-foreground after:transition-transform after:duration-200 hover:text-foreground dark:after:bg-[#b99572]',
                                                     isActive && 'text-foreground after:scale-x-100 dark:text-[#f6efe5]'
                                                 )}>
-                                                {item.name}
+                                                {t.nav[item.key]}
                                             </Link>
                                         </li>
                                     )
@@ -140,17 +154,18 @@ export const HeroHeader = () => {
                                                     href={item.href}
                                                     onClick={() => setMenuState(false)}
                                                     className={cn(
-                                                        'block font-serif text-lg text-muted-foreground underline-offset-4 transition-colors duration-150 hover:text-foreground',
+                                                        'block font-serif text-xl text-muted-foreground underline-offset-4 transition-colors duration-150 hover:text-foreground',
                                                         isActive && 'text-foreground underline dark:text-[#f6efe5]'
                                                     )}>
-                                                    <span>{item.name}</span>
+                                                    <span>{t.nav[item.key]}</span>
                                                 </Link>
                                             </li>
                                         )
                                     })}
                                 </ul>
                             </div>
-                            <div className="hidden lg:flex">
+                            <div className="hidden items-center gap-2 lg:flex">
+                                <LanguageToggle />
                                 <ThemeToggle />
                             </div>
                         </div>
@@ -160,5 +175,4 @@ export const HeroHeader = () => {
         </header>
     )
 }
-
 

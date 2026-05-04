@@ -28,10 +28,11 @@ export default function RootLayout({
       suppressHydrationWarning
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col"><script dangerouslySetInnerHTML={{ __html: `(function(){try{var theme=localStorage.getItem('theme');if(theme==='dark'){document.documentElement.classList.add('dark');}}catch(e){}})();` }} />{children}</body>
+      <body className="min-h-full flex flex-col"><script dangerouslySetInnerHTML={{ __html: `(function(){try{var theme=localStorage.getItem('theme');if(theme==='dark'){document.documentElement.classList.add('dark');}var language=localStorage.getItem('language')==='zh'?'zh':'en';document.documentElement.dataset.language=language;document.documentElement.lang=language==='zh'?'zh-CN':'en';}catch(e){}})();` }} />{children}</body>
     </html>
   );
 }
+
 
 
 

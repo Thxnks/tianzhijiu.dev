@@ -4,43 +4,46 @@ import React from 'react'
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
+import { useLanguage } from '@/components/language-provider'
 import { HeroHeader } from './header'
 import { ChevronRight } from 'lucide-react'
 import Image from 'next/image'
 
-
-function TypewriterTitle({ text }: { text: string }) {
+function TypewriterTitle({ first, second }: { first: string; second: string }) {
+    const fullText = `${first} ${second}`
+    const firstLength = first.length
     const [visibleCount, setVisibleCount] = React.useState(0)
 
     React.useEffect(() => {
         const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
         if (reduceMotion) {
-            setVisibleCount(text.length)
+            setVisibleCount(fullText.length)
             return
         }
 
         setVisibleCount(0)
-        const timers = Array.from(text).map((_, index) =>
+        const timers = Array.from(fullText).map((_, index) =>
             window.setTimeout(() => setVisibleCount(index + 1), (index + 1) * 60)
         )
 
         return () => timers.forEach((timer) => window.clearTimeout(timer))
-    }, [text])
+    }, [fullText])
 
     return (
         <>
             <span className="block sm:inline" aria-hidden="true">
-                {text.slice(0, Math.min(9, visibleCount))}
+                {fullText.slice(0, Math.min(firstLength, visibleCount))}
             </span>
             <span className="block sm:ml-3 sm:inline" aria-hidden="true">
-                {text.slice(10, visibleCount)}
+                {fullText.slice(firstLength + 1, visibleCount)}
             </span>
             <span className="hero-type-cursor inline-block align-baseline" aria-hidden="true" />
-            <span className="sr-only">{text}</span>
+            <span className="sr-only">{fullText}</span>
         </>
     )
 }
+
 const skills = [
     { name: 'Java', position: 'sm:left-[20%] sm:top-3 lg:left-[18%] lg:top-4', emphasis: '', floatDelay: '0ms', floatDistance: '6px', floatDuration: '3.2s' },
     { name: 'Spring Boot', position: 'sm:left-1/2 sm:top-0 sm:-translate-x-1/2 lg:top-0', emphasis: '', floatDelay: '260ms', floatDistance: '8px', floatDuration: '3.7s' },
@@ -55,6 +58,7 @@ const skills = [
 ]
 
 export default function HeroSection() {
+    const { t } = useLanguage()
     const [isVisible, setIsVisible] = React.useState(false)
 
     React.useEffect(() => {
@@ -82,15 +86,15 @@ export default function HeroSection() {
                         <div className="relative z-10 mx-auto w-full max-w-7xl px-5 sm:px-6">
                             <div className="mx-auto max-w-4xl text-center">
                                 <h1 className="font-serif text-3xl font-medium leading-tight sm:whitespace-nowrap sm:text-4xl sm:leading-none md:text-5xl lg:text-6xl xl:text-7xl">
-                                    <TypewriterTitle text="Hey, I am TianZhiJiu" />
+                                    <TypewriterTitle first={t.hero.titleFirst} second={t.hero.titleSecond} />
                                 </h1>
-                                <p className={`text-muted-foreground mx-auto mt-7 max-w-2xl text-balance text-base leading-8 transition-all delay-150 duration-700 ease-out sm:text-lg sm:leading-9 md:text-xl lg:max-w-3xl lg:text-2xl lg:leading-10 ${revealClass}`}>I build thoughtful backend systems, AI-powered tools, and web experiences with clarity and purpose.</p>
+                                <p className={`text-muted-foreground mx-auto mt-7 max-w-2xl text-balance text-base leading-8 transition-all delay-150 duration-700 ease-out sm:text-lg sm:leading-9 md:text-xl lg:max-w-3xl lg:text-2xl lg:leading-10 ${revealClass}`}>{t.hero.subtitle}</p>
 
                                 <Button
                                     asChild
                                     className={`mt-10 h-12 px-6 pr-2 text-sm transition-all delay-300 duration-700 ease-out sm:text-base md:h-14 md:px-7 md:pr-3 md:text-lg lg:h-16 lg:px-9 lg:pr-4 lg:text-xl ${revealClass}`}>
                                     <Link href="#projects">
-                                        <span className="text-nowrap">Explore My Work</span>
+                                        <span className="text-nowrap">{t.hero.cta}</span>
                                         <ChevronRight className="opacity-50" />
                                     </Link>
                                 </Button>
@@ -112,19 +116,3 @@ export default function HeroSection() {
         </>
     )
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
