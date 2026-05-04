@@ -47,10 +47,10 @@ export const HeroHeader = () => {
                                         <Button
                                             asChild
                                             variant="ghost"
-                                            className="h-11 px-4 text-xl">
+                                            className="h-11 px-4 text-lg">
                                             <Link
                                                 href={item.href}
-                                                className="text-xl">
+                                                className="text-lg">
                                                 <span>{item.name}</span>
                                             </Link>
                                         </Button>
@@ -66,7 +66,7 @@ export const HeroHeader = () => {
                                         <li key={index}>
                                             <Link
                                                 href={item.href}
-                                                className="text-muted-foreground hover:text-accent-foreground block text-xl duration-150">
+                                                className="text-muted-foreground hover:text-accent-foreground block text-lg duration-150">
                                                 <span>{item.name}</span>
                                             </Link>
                                         </li>
@@ -90,6 +90,7 @@ export const HeroHeader = () => {
         </header>
     )
 }
+
 
 
 

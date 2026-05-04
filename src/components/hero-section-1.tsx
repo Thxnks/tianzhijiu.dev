@@ -8,9 +8,17 @@ import { HeroHeader } from './header'
 import { ChevronRight } from 'lucide-react'
 import Image from 'next/image'
 
-const skillRows = [
-    ['Java', 'Spring Boot', 'MySQL', 'Redis', 'RabbitMQ'],
-    ['Docker', 'Linux', 'Git', 'Vue', 'AI / LLM'],
+const skills = [
+    { name: 'Java', position: 'sm:left-[20%] sm:top-3', emphasis: '' },
+    { name: 'Spring Boot', position: 'sm:left-1/2 sm:top-0 sm:-translate-x-1/2', emphasis: '' },
+    { name: 'MySQL', position: 'sm:right-[20%] sm:top-3', emphasis: '' },
+    { name: 'Redis', position: 'sm:left-[15%] sm:top-[86px]', emphasis: '' },
+    { name: 'RabbitMQ', position: 'sm:left-1/2 sm:top-[92px] sm:-translate-x-1/2', emphasis: '' },
+    { name: 'Docker', position: 'sm:right-[15%] sm:top-[86px]', emphasis: '' },
+    { name: 'Linux', position: 'sm:left-[24%] sm:top-[176px]', emphasis: '' },
+    { name: 'Git', position: 'sm:left-1/2 sm:top-[166px] sm:-translate-x-1/2', emphasis: '' },
+    { name: 'Vue', position: 'sm:right-[24%] sm:top-[176px]', emphasis: '' },
+    { name: 'AI / LLM', position: 'sm:left-1/2 sm:top-[240px] sm:-translate-x-1/2', emphasis: '' },
 ]
 
 export default function HeroSection() {
@@ -40,34 +48,28 @@ export default function HeroSection() {
                         </div>
                         <div className="relative z-10 mx-auto w-full max-w-5xl px-5 sm:px-6">
                             <div className="mx-auto max-w-3xl text-center">
-                                <h1 className={`font-serif text-5xl font-medium leading-tight transition-all duration-700 ease-out sm:whitespace-nowrap sm:text-6xl sm:leading-none lg:text-7xl ${revealClass}`}>
+                                <h1 className={`font-serif text-3xl font-medium leading-tight transition-all duration-700 ease-out sm:whitespace-nowrap sm:text-4xl sm:leading-none lg:text-5xl ${revealClass}`}>
                                     <span className="block sm:inline">Hey, I am</span>
                                     <span className="block sm:ml-3 sm:inline">TianZhiJiu</span>
                                 </h1>
-                                <p className={`text-muted-foreground mx-auto mt-7 max-w-2xl text-balance text-lg leading-8 transition-all delay-150 duration-700 ease-out sm:text-xl sm:leading-9 ${revealClass}`}>I build thoughtful backend systems, AI-powered tools, and web experiences with clarity and purpose.</p>
+                                <p className={`text-muted-foreground mx-auto mt-7 max-w-2xl text-balance text-base leading-8 transition-all delay-150 duration-700 ease-out sm:text-lg sm:leading-9 ${revealClass}`}>I build thoughtful backend systems, AI-powered tools, and web experiences with clarity and purpose.</p>
 
                                 <Button
                                     asChild
-                                    className={`mt-10 h-12 px-6 pr-2 text-base transition-all delay-300 duration-700 ease-out sm:text-lg ${revealClass}`}>
+                                    className={`mt-10 h-12 px-6 pr-2 text-sm transition-all delay-300 duration-700 ease-out sm:text-base ${revealClass}`}>
                                     <Link href="#projects">
                                         <span className="text-nowrap">Explore My Work</span>
                                         <ChevronRight className="opacity-50" />
                                     </Link>
                                 </Button>
                             </div>
-                            <div className={`mx-auto mt-16 flex w-full max-w-4xl flex-col items-center gap-4 transition-all delay-500 duration-700 ease-out sm:mt-24 sm:gap-6 ${revealClass}`}>
-                                {skillRows.map((row, rowIndex) => (
-                                    <div
-                                        key={rowIndex}
-                                        className="flex flex-wrap justify-center gap-3 sm:gap-6">
-                                        {row.map((skill) => (
-                                            <Card
-                                                key={skill}
-                                                className="flex h-11 items-center justify-center rounded-full border border-zinc-200/80 bg-white/70 px-5 text-zinc-800 shadow-sm backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md sm:h-14 sm:px-7">
-                                                <span className="text-nowrap text-center font-serif text-sm font-medium leading-none sm:text-lg">{skill}</span>
-                                            </Card>
-                                        ))}
-                                    </div>
+                            <div className={`relative mx-auto mt-10 flex h-[300px] w-full max-w-4xl flex-wrap content-start justify-center gap-2 overflow-hidden transition-all delay-500 duration-700 ease-out sm:mt-14 sm:block sm:h-[300px] ${revealClass}`}>
+                                {skills.map((skill) => (
+                                    <Card
+                                        key={skill.name}
+                                        className={`flex h-9 items-center justify-center rounded-full border border-zinc-200/80 bg-white/70 px-4 text-zinc-800 shadow-sm backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md sm:absolute sm:h-11 sm:px-5 ${skill.position} ${skill.emphasis}`}>
+                                        <span className="text-nowrap text-center font-serif text-xs font-medium leading-none sm:text-base">{skill.name}</span>
+                                    </Card>
                                 ))}
                             </div>
                         </div>
