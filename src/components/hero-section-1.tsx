@@ -40,7 +40,10 @@ export default function HeroSection() {
                         </div>
                         <div className="relative z-10 mx-auto w-full max-w-5xl px-5 sm:px-6">
                             <div className="mx-auto max-w-3xl text-center">
-                                <h1 className={`text-balance font-serif text-5xl font-medium leading-tight transition-all duration-700 ease-out sm:whitespace-nowrap sm:text-6xl sm:leading-none lg:text-7xl ${revealClass}`}>Hey, I am TianZhiJiu</h1>
+                                <h1 className={`font-serif text-5xl font-medium leading-tight transition-all duration-700 ease-out sm:whitespace-nowrap sm:text-6xl sm:leading-none lg:text-7xl ${revealClass}`}>
+                                    <span className="block sm:inline">Hey, I am</span>
+                                    <span className="block sm:ml-3 sm:inline">TianZhiJiu</span>
+                                </h1>
                                 <p className={`text-muted-foreground mx-auto mt-7 max-w-2xl text-balance text-lg leading-8 transition-all delay-150 duration-700 ease-out sm:text-xl sm:leading-9 ${revealClass}`}>I build thoughtful backend systems, AI-powered tools, and web experiences with clarity and purpose.</p>
 
                                 <Button
@@ -74,6 +77,7 @@ export default function HeroSection() {
         </>
     )
 }
+
 
 
 
