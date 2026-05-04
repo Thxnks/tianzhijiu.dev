@@ -67,19 +67,19 @@ const journeyItems = [
 
 export default function Home() {
   return (
-    <>
+    <div className="page-soft-bg min-h-screen">
       <HeroSection />
       <BackToTop />
-
-      <RevealSection id="projects" className="scroll-mt-24 py-24">
+      <div>
+        <RevealSection id="projects" className="scroll-mt-24 py-24">
         <div className="mx-auto max-w-5xl px-6">
           <p data-reveal style={{ '--reveal-delay': '0ms' } as CSSProperties} className="text-left text-xs font-medium uppercase tracking-wider md:text-sm text-muted-foreground">Projects</p>
           <h2 data-reveal style={{ '--reveal-delay': '120ms' } as CSSProperties} className="mt-3 text-left font-serif text-2xl font-medium md:text-3xl">Selected Work</h2>
-          <div data-reveal style={{ '--reveal-delay': '240ms' } as CSSProperties} className="mt-8 divide-y divide-zinc-200/80 border-y border-zinc-200/80">
+          <div data-reveal style={{ '--reveal-delay': '240ms' } as CSSProperties} className="mt-8 divide-y divide-zinc-200/80 border-y border-zinc-200/80 dark:divide-white/10 dark:border-white/10">
             {projectItems.map((project) => (
               <article
                 key={project.title}
-                className="group grid gap-4 py-5 transition-colors duration-300 hover:bg-zinc-50/70 md:grid-cols-[1fr_20rem] md:items-center md:gap-6">
+                className="group grid gap-4 py-5 transition-colors duration-300 hover:bg-zinc-50/70 dark:hover:bg-white/[0.04] md:grid-cols-[1fr_20rem] md:items-center md:gap-6">
                 <div>
                   <h3 className="font-serif text-lg font-medium md:text-xl">{project.title}</h3>
                   <p className="mt-2 max-w-2xl text-sm text-muted-foreground">{project.description}</p>
@@ -89,7 +89,7 @@ export default function Home() {
                     {project.stack.map((tech) => (
                       <span
                         key={tech}
-                        className="rounded-full border border-zinc-200/80 bg-white/70 px-2.5 py-1 font-serif text-xs text-muted-foreground shadow-sm">
+                        className="rounded-full border border-zinc-200/80 bg-white/70 px-2.5 py-1 font-serif text-xs text-muted-foreground shadow-sm dark:border-white/10 dark:bg-[#211b15]/75 dark:text-[#b9aca0]">
                         {tech}
                       </span>
                     ))}
@@ -99,7 +99,7 @@ export default function Home() {
                       href={project.github}
                       target="_blank"
                       rel="noreferrer"
-                      className="inline-flex h-8 items-center justify-center rounded-full border border-zinc-200/80 bg-white/70 px-3.5 font-serif text-xs font-medium text-foreground shadow-sm transition-transform duration-300 group-hover:-translate-y-0.5">
+                      className="inline-flex h-8 items-center justify-center rounded-full border border-zinc-200/80 bg-white/70 px-3.5 font-serif text-xs font-medium text-foreground shadow-sm transition-transform duration-300 group-hover:-translate-y-0.5 dark:border-white/10 dark:bg-[#211b15]/75 dark:text-[#f5efe7] dark:hover:bg-[#2a2119]">
                       GitHub
                     </a>
                   </div>
@@ -114,7 +114,7 @@ export default function Home() {
         <div className="mx-auto max-w-5xl px-6">
           <p data-reveal style={{ '--reveal-delay': '0ms' } as CSSProperties} className="text-left text-xs font-medium uppercase tracking-wider md:text-sm text-muted-foreground">Skills</p>
           <h2 data-reveal style={{ '--reveal-delay': '120ms' } as CSSProperties} className="mt-3 text-left font-serif text-2xl font-medium md:text-3xl">Technical Focus</h2>
-          <div data-reveal style={{ '--reveal-delay': '240ms' } as CSSProperties} className="mt-8 divide-y divide-zinc-200/80 border-y border-zinc-200/80">
+          <div data-reveal style={{ '--reveal-delay': '240ms' } as CSSProperties} className="mt-8 divide-y divide-zinc-200/80 border-y border-zinc-200/80 dark:divide-white/10 dark:border-white/10">
             {skillGroups.map((group) => (
               <div
                 key={group.category}
@@ -124,7 +124,7 @@ export default function Home() {
                   {group.skills.map((skill) => (
                     <span
                       key={skill}
-                      className="rounded-full border border-zinc-200/80 bg-white/70 px-3.5 py-1.5 font-serif text-sm text-muted-foreground shadow-sm">
+                      className="rounded-full border border-zinc-200/80 bg-white/70 px-3.5 py-1.5 font-serif text-sm text-muted-foreground shadow-sm dark:border-white/10 dark:bg-[#211b15]/75 dark:text-[#b9aca0]">
                       {skill}
                     </span>
                   ))}
@@ -158,10 +158,10 @@ export default function Home() {
                   {item.time}
                 </div>
                 <div className="relative flex justify-center">
-                  <span className="mt-1.5 size-2 rounded-full border border-zinc-300 bg-background shadow-sm" />
-                  {index < journeyItems.length - 1 ? <span className="absolute top-4 h-full w-px bg-zinc-200" /> : null}
+                  <span className="mt-1.5 size-2 rounded-full border border-zinc-300 bg-background shadow-sm dark:border-white/20 dark:bg-[#17130f]" />
+                  {index < journeyItems.length - 1 ? <span className="absolute top-4 h-full w-px bg-zinc-200 dark:bg-white/10" /> : null}
                 </div>
-                <article className="mb-3 rounded-xl border border-zinc-200/80 bg-white/70 p-3 shadow-sm backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-zinc-300 hover:bg-white hover:shadow-md md:p-4">
+                <article className="mb-3 rounded-xl border border-zinc-200/80 bg-white/70 p-3 shadow-sm backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-zinc-300 hover:bg-white hover:shadow-md dark:border-white/10 dark:bg-[#211b15]/75 dark:hover:border-white/20 dark:hover:bg-[#2a2119] md:p-4">
                   <h3 className="font-serif text-base font-medium md:text-lg">{item.title}</h3>
                   <p className="mt-1.5 text-xs text-muted-foreground md:text-sm">{item.description}</p>
                 </article>
@@ -181,33 +181,28 @@ export default function Home() {
           <div data-reveal style={{ '--reveal-delay': '360ms' } as CSSProperties} className="mt-8 flex max-w-3xl flex-wrap gap-3">
             <a
               href="mailto:thxnks97@gmail.com"
-              className="inline-flex h-11 items-center justify-center rounded-full border border-zinc-200/80 bg-white/70 px-5 font-serif text-sm font-medium text-foreground shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md">
+              className="inline-flex h-11 items-center justify-center rounded-full border border-zinc-200/80 bg-white/70 px-5 font-serif text-sm font-medium text-foreground shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md dark:border-white/10 dark:bg-[#211b15]/75 dark:text-[#f5efe7] dark:hover:bg-[#2a2119]">
               Email Me
             </a>
             <a
               href="https://github.com/Thxnks"
               target="_blank"
               rel="noreferrer"
-              className="inline-flex h-11 items-center justify-center rounded-full border border-zinc-200/80 bg-white/70 px-5 font-serif text-sm font-medium text-foreground shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md">
+              className="inline-flex h-11 items-center justify-center rounded-full border border-zinc-200/80 bg-white/70 px-5 font-serif text-sm font-medium text-foreground shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md dark:border-white/10 dark:bg-[#211b15]/75 dark:text-[#f5efe7] dark:hover:bg-[#2a2119]">
               GitHub
             </a>
             <a
               href="/resume.pdf"
               download
-              className="inline-flex h-11 items-center justify-center rounded-full border border-zinc-200/80 bg-white/70 px-5 font-serif text-sm font-medium text-foreground shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md">
+              className="inline-flex h-11 items-center justify-center rounded-full border border-zinc-200/80 bg-white/70 px-5 font-serif text-sm font-medium text-foreground shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md dark:border-white/10 dark:bg-[#211b15]/75 dark:text-[#f5efe7] dark:hover:bg-[#2a2119]">
               Download Resume
             </a>
           </div>
         </div>
-      </RevealSection>
-    </>
+        </RevealSection>
+      </div>
+    </div>
   )
 }
-
-
-
-
-
-
 
 
