@@ -21,6 +21,29 @@ const projectItems = [
   },
 ]
 
+const skillGroups = [
+  {
+    category: "Backend",
+    skills: ["Java", "Spring Boot", "REST API"],
+  },
+  {
+    category: "Database & Middleware",
+    skills: ["MySQL", "Redis", "RabbitMQ"],
+  },
+  {
+    category: "Tools",
+    skills: ["Git", "Docker", "Linux"],
+  },
+  {
+    category: "Frontend",
+    skills: ["Vue", "React", "Tailwind CSS"],
+  },
+  {
+    category: "AI",
+    skills: ["LLM API", "RAG basics", "AI coding tools"],
+  },
+]
+
 const journeyItems = [
   {
     time: "2024",
@@ -83,12 +106,37 @@ export default function Home() {
         </div>
       </section>
 
+      <section id="skills" className="scroll-mt-24 py-24">
+        <div className="mx-auto max-w-5xl px-6">
+          <p className="text-left text-xs font-medium uppercase tracking-wider md:text-sm text-muted-foreground">Skills</p>
+          <h2 className="mt-3 text-left font-serif text-2xl font-medium md:text-3xl">Technical Focus</h2>
+          <div className="mt-8 divide-y divide-zinc-200/80 border-y border-zinc-200/80">
+            {skillGroups.map((group) => (
+              <div
+                key={group.category}
+                className="grid gap-3 py-4 md:grid-cols-[14rem_1fr] md:items-center md:gap-6">
+                <p className="font-serif text-base font-medium md:text-lg">{group.category}</p>
+                <div className="flex flex-wrap gap-2">
+                  {group.skills.map((skill) => (
+                    <span
+                      key={skill}
+                      className="rounded-full border border-zinc-200/80 bg-white/70 px-3.5 py-1.5 font-serif text-sm text-muted-foreground shadow-sm">
+                      {skill}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section id="about" className="scroll-mt-24 py-24">
         <div className="mx-auto max-w-5xl px-6">
           <p className="text-left text-xs font-medium uppercase tracking-wider md:text-sm text-muted-foreground">About</p>
           <h2 className="mt-3 text-left font-serif text-2xl font-medium md:text-3xl">About TianZhiJiu</h2>
-          <p className="mt-4 max-w-3xl text-sm text-muted-foreground md:text-base">
-            Write a concise introduction about who you are, what you build, and what kind of work you are interested in.
+          <p className="mt-4 max-w-3xl text-base leading-8 text-muted-foreground md:text-lg md:leading-9">
+            I am an Artificial Intelligence student learning Java backend development. I focus on Spring Boot, MySQL, Redis, RabbitMQ, Docker, and building practical AI-powered applications.
           </p>
         </div>
       </section>
@@ -151,4 +199,6 @@ export default function Home() {
     </>
   )
 }
+
+
 
