@@ -1,28 +1,9 @@
 import type { CSSProperties } from "react"
 import { BackToTop } from "@/components/back-to-top"
 import HeroSection from "@/components/hero-section-1"
+import { ProjectsSection } from "@/components/projects-section"
 import { RevealSection } from "@/components/reveal-section"
 
-const projectItems = [
-  {
-    title: "AI Code Helper",
-    stack: ["Spring Boot", "LangChain4j", "DashScope", "Vue"],
-    description: "An AI-powered coding coach for algorithm practice, backend interview preparation, and project learning.",
-    github: "https://github.com/Thxnks",
-  },
-  {
-    title: "Citylife Review",
-    stack: ["Spring Boot", "MySQL", "Redis", "RabbitMQ"],
-    description: "A local life review platform focusing on backend APIs, caching, message queues, and practical business logic.",
-    github: "https://github.com/Thxnks",
-  },
-  {
-    title: "Personal Portfolio",
-    stack: ["Next.js", "Tailwind CSS", "shadcn/ui"],
-    description: "A personal website built to showcase projects, technical skills, and learning experience.",
-    github: "https://github.com/Thxnks",
-  },
-]
 
 const skillGroups = [
   {
@@ -75,38 +56,7 @@ export default function Home() {
         <div className="mx-auto max-w-5xl px-6">
           <p data-reveal style={{ '--reveal-delay': '0ms' } as CSSProperties} className="text-left text-xs font-medium uppercase tracking-wider md:text-sm text-muted-foreground">Projects</p>
           <h2 data-reveal style={{ '--reveal-delay': '120ms' } as CSSProperties} className="mt-3 text-left font-serif text-2xl font-medium md:text-3xl">Selected Work</h2>
-          <div data-reveal style={{ '--reveal-delay': '240ms' } as CSSProperties} className="mt-8 divide-y divide-zinc-200/80 border-y border-zinc-200/80 dark:divide-white/10 dark:border-white/10">
-            {projectItems.map((project) => (
-              <article
-                key={project.title}
-                className="group grid gap-4 py-5 transition-colors duration-300 hover:bg-zinc-50/70 dark:hover:bg-white/[0.04] md:grid-cols-[1fr_20rem] md:items-center md:gap-6">
-                <div>
-                  <h3 className="font-serif text-lg font-medium md:text-xl">{project.title}</h3>
-                  <p className="mt-2 max-w-2xl text-sm text-muted-foreground">{project.description}</p>
-                </div>
-                <div className="space-y-3 md:text-right">
-                  <div className="flex flex-wrap gap-1.5 md:justify-end">
-                    {project.stack.map((tech) => (
-                      <span
-                        key={tech}
-                        className="rounded-full border border-zinc-200/80 bg-white/70 px-2.5 py-1 font-serif text-xs text-muted-foreground shadow-sm dark:border-white/10 dark:bg-[#34302a]/75 dark:text-[#c8baaa]">
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                  <div className="flex md:justify-end">
-                    <a
-                      href={project.github}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="inline-flex h-8 items-center justify-center rounded-full border border-zinc-200/80 bg-white/70 px-3.5 font-serif text-xs font-medium text-foreground shadow-sm transition-transform duration-300 group-hover:-translate-y-0.5 dark:border-white/10 dark:bg-[#34302a]/75 dark:text-[#f6efe5] dark:hover:bg-[#3d372f]">
-                      GitHub
-                    </a>
-                  </div>
-                </div>
-              </article>
-            ))}
-          </div>
+          <ProjectsSection />
         </div>
       </RevealSection>
 
@@ -139,9 +89,14 @@ export default function Home() {
         <div className="mx-auto max-w-5xl px-6">
           <p data-reveal style={{ '--reveal-delay': '0ms' } as CSSProperties} className="text-left text-xs font-medium uppercase tracking-wider md:text-sm text-muted-foreground">About</p>
           <h2 data-reveal style={{ '--reveal-delay': '120ms' } as CSSProperties} className="mt-3 text-left font-serif text-2xl font-medium md:text-3xl">About TianZhiJiu</h2>
-          <p data-reveal style={{ '--reveal-delay': '240ms' } as CSSProperties} className="mt-4 max-w-3xl text-base leading-8 text-muted-foreground md:text-lg md:leading-9">
-            I am an Artificial Intelligence student learning Java backend development. I focus on Spring Boot, MySQL, Redis, RabbitMQ, Docker, and building practical AI-powered applications.
-          </p>
+          <div data-reveal style={{ '--reveal-delay': '240ms' } as CSSProperties} className="mt-4 max-w-3xl space-y-4 text-base leading-8 text-muted-foreground md:text-lg md:leading-9">
+            <p>
+              I am an Artificial Intelligence student focused on Agent backend development and AI-powered web applications.
+            </p>
+            <p>
+              I am currently learning Spring Boot, MySQL, Redis, RabbitMQ, and Docker, while exploring how LLMs can work with coding assistants, learning platforms, and backend services.
+            </p>
+          </div>
         </div>
       </RevealSection>
 
@@ -187,7 +142,7 @@ export default function Home() {
             <a
               href="https://github.com/Thxnks"
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
               className="inline-flex h-11 items-center justify-center rounded-full border border-zinc-200/80 bg-white/70 px-5 font-serif text-sm font-medium text-foreground shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md dark:border-white/10 dark:bg-[#34302a]/75 dark:text-[#f6efe5] dark:hover:bg-[#3d372f]">
               GitHub
             </a>
@@ -204,6 +159,10 @@ export default function Home() {
     </div>
   )
 }
+
+
+
+
 
 
 

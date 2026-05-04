@@ -3,7 +3,6 @@
 import React from 'react'
 import Link from 'next/link'
 import { Menu, Moon, Sun, X } from 'lucide-react'
-import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
 
 const menuItems = [
@@ -154,16 +153,6 @@ export const HeroHeader = () => {
                             <div className="hidden lg:flex">
                                 <ThemeToggle />
                             </div>
-                            <div className="flex w-full flex-col space-y-3 sm:flex-row sm:gap-3 sm:space-y-0 md:w-fit">
-                                <Button
-                                    asChild
-                                    size="sm"
-                                    className={cn(isScrolled ? 'lg:inline-flex' : 'hidden')}>
-                                    <Link href="#">
-                                        <span>Get Started</span>
-                                    </Link>
-                                </Button>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -171,4 +160,5 @@ export const HeroHeader = () => {
         </header>
     )
 }
+
 
