@@ -1,4 +1,4 @@
-@import "tailwindcss";
+﻿@import "tailwindcss";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
 
@@ -138,6 +138,11 @@
     animation: hero-type-cursor-blink 1.05s steps(2, start) infinite;
   }
 
+  @media (max-width: 639px) {
+    .hero-type-cursor {
+      display: none;
+    }
+  }
   @keyframes hero-type-cursor-blink {
     0%, 45% {
       opacity: 1;
@@ -218,6 +223,8 @@
     }
   }
 }
+
+
 
 
 

@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import React from 'react'
 import Link from 'next/link'
@@ -38,7 +38,7 @@ function TypewriterTitle({ first, second }: { first: string; second: string }) {
             <span className="block sm:ml-3 sm:inline" aria-hidden="true">
                 {fullText.slice(firstLength + 1, visibleCount)}
             </span>
-            <span className="hero-type-cursor inline-block align-baseline" aria-hidden="true" />
+            <span className="hero-type-cursor hidden align-baseline sm:inline-block" aria-hidden="true" />
             <span className="sr-only">{fullText}</span>
         </>
     )
@@ -73,7 +73,7 @@ export default function HeroSection() {
             <HeroHeader />
             <main className="overflow-hidden">
                 <section>
-                    <div className="relative flex min-h-screen items-center py-20 md:py-32">
+                    <div className="relative flex min-h-screen items-center py-16 sm:py-20 md:py-32">
                         <div className="mask-radial-from-45% mask-radial-to-75% mask-radial-at-top mask-radial-[75%_100%] mask-t-from-50% lg:aspect-9/4 absolute inset-0 aspect-square lg:top-24 opacity-80 dark:opacity-12">
                             <Image
                                 src="https://images.unsplash.com/photo-1740516367177-ae20098c8786?q=80&w=2268&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
@@ -85,27 +85,27 @@ export default function HeroSection() {
                         </div>
                         <div className="relative z-10 mx-auto w-full max-w-7xl px-5 sm:px-6">
                             <div className="mx-auto max-w-4xl text-center">
-                                <h1 className="font-serif text-3xl font-medium leading-tight sm:whitespace-nowrap sm:text-4xl sm:leading-none md:text-5xl lg:text-6xl xl:text-7xl">
+                                <h1 className="font-serif text-4xl font-medium leading-tight sm:whitespace-nowrap sm:text-5xl sm:leading-none md:text-5xl lg:text-6xl xl:text-7xl">
                                     <TypewriterTitle first={t.hero.titleFirst} second={t.hero.titleSecond} />
                                 </h1>
-                                <p className={`text-muted-foreground mx-auto mt-7 max-w-2xl text-balance text-base leading-8 transition-all delay-150 duration-700 ease-out sm:text-lg sm:leading-9 md:text-xl lg:max-w-3xl lg:text-2xl lg:leading-10 ${revealClass}`}>{t.hero.subtitle}</p>
+                                <p className={`text-muted-foreground mx-auto mt-7 max-w-2xl text-balance text-sm leading-7 transition-all delay-150 duration-700 ease-out sm:text-lg sm:leading-9 md:text-xl lg:max-w-3xl lg:text-2xl lg:leading-10 ${revealClass}`}>{t.hero.subtitle}</p>
 
                                 <Button
                                     asChild
-                                    className={`mt-10 h-12 px-6 pr-2 text-sm transition-all delay-300 duration-700 ease-out sm:text-base md:h-14 md:px-7 md:pr-3 md:text-lg lg:h-16 lg:px-9 lg:pr-4 lg:text-xl ${revealClass}`}>
+                                    className={`mt-8 h-11 px-5 pr-2 text-sm transition-all delay-300 duration-700 ease-out sm:mt-10 sm:h-12 sm:px-6 sm:text-base md:h-14 md:px-7 md:pr-3 md:text-lg lg:h-16 lg:px-9 lg:pr-4 lg:text-xl ${revealClass}`}>
                                     <Link href="#projects">
                                         <span className="text-nowrap">{t.hero.cta}</span>
                                         <ChevronRight className="opacity-50" />
                                     </Link>
                                 </Button>
                             </div>
-                            <div className={`relative mx-auto mt-10 flex h-[300px] w-full max-w-5xl flex-wrap content-start justify-center gap-2 overflow-visible pt-6 transition-all delay-500 duration-700 ease-out sm:mt-14 sm:block sm:h-[300px] md:h-[320px] lg:mt-20 lg:h-[390px] lg:max-w-6xl ${revealClass}`}>
+                            <div className={`relative mx-auto mt-10 flex h-auto w-full max-w-sm flex-wrap content-start justify-center gap-3 overflow-visible pt-2 transition-all delay-500 duration-700 ease-out sm:mt-14 sm:block sm:h-[300px] sm:max-w-5xl sm:pt-6 md:h-[320px] lg:mt-20 lg:h-[390px] lg:max-w-6xl ${revealClass}`}>
                                 {skills.map((skill) => (
                                     <Card
                                         key={skill.name}
                                         style={{ '--float-delay': skill.floatDelay, '--float-distance': skill.floatDistance, '--float-duration': skill.floatDuration } as React.CSSProperties}
-                                        className={`hero-skill-float flex h-9 items-center justify-center rounded-full border border-zinc-200/80 bg-white/70 px-4 text-zinc-800 shadow-sm backdrop-blur-sm dark:border-white/10 dark:bg-[#34302a]/85 dark:text-[#f6efe5] transition-all duration-300 hover:-translate-y-1 hover:shadow-md sm:absolute sm:h-11 sm:px-5 md:h-12 md:px-6 lg:h-14 lg:px-8 ${skill.position} ${skill.emphasis}`}>
-                                        <span className="text-nowrap text-center font-serif text-xs font-medium leading-none sm:text-base md:text-lg lg:text-xl">{skill.name}</span>
+                                        className={`hero-skill-float flex h-10 items-center justify-center rounded-full border border-zinc-200/80 bg-white/70 px-4 text-zinc-800 shadow-sm backdrop-blur-sm dark:border-white/10 dark:bg-[#34302a]/85 dark:text-[#f6efe5] transition-all duration-300 hover:-translate-y-1 hover:shadow-md sm:absolute sm:h-11 sm:px-5 md:h-12 md:px-6 lg:h-14 lg:px-8 ${skill.position} ${skill.emphasis}`}>
+                                        <span className="text-nowrap text-center font-serif text-sm font-medium leading-none sm:text-base md:text-lg lg:text-xl">{skill.name}</span>
                                     </Card>
                                 ))}
                             </div>
@@ -116,3 +116,4 @@ export default function HeroSection() {
         </>
     )
 }
+
