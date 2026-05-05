@@ -50,7 +50,7 @@
 }
 
 :root {
-  --font-english: var(--font-geist-sans), Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-english: Georgia, Cambria, "Times New Roman", Times, serif;
   --font-chinese: "Noto Serif SC", "Source Han Serif SC", "Songti SC", serif;
   --font-site-family: var(--font-english);
   --background: oklch(1 0 0);
@@ -258,6 +258,7 @@
     }
   }
 }
+
 
 
 
