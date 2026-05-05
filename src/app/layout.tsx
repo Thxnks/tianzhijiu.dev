@@ -33,10 +33,30 @@ export default function RootLayout({
       suppressHydrationWarning
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col"><script dangerouslySetInnerHTML={{ __html: `(function(){try{var theme=localStorage.getItem('theme');if(theme==='dark'){document.documentElement.classList.add('dark');}var language=localStorage.getItem('language')==='zh'?'zh':'en';document.documentElement.dataset.language=language;document.documentElement.lang=language==='zh'?'zh-CN':'en';}catch(e){}})();` }} />{children}</body>
+      <body className="min-h-full flex flex-col">
+        <script dangerouslySetInnerHTML={{ __html: `(function(){try{var theme=localStorage.getItem('theme');if(theme==='dark'){document.documentElement.classList.add('dark');}var language=localStorage.getItem('language')==='zh'?'zh':'en';document.documentElement.dataset.language=language;document.documentElement.lang=language==='zh'?'zh-CN':'en';}catch(e){}})();` }} />
+        <span
+          id="font-debug-zh"
+          data-font-debug
+          aria-hidden="true"
+          style={{
+            position: "absolute",
+            width: 1,
+            height: 1,
+            overflow: "hidden",
+            clipPath: "inset(50%)",
+            whiteSpace: "nowrap",
+            fontFamily: '"Noto Serif SC", "Source Han Serif SC", "Songti SC", serif',
+          }}
+        >
+          中文字体测试：人工智能 后端开发 项目经历
+        </span>
+        {children}
+      </body>
     </html>
   );
 }
+
 
 
 
