@@ -125,8 +125,10 @@
     font-family: var(--font-site-serif);
   }
 
-  html[data-language="zh"] body {
-    font-family: var(--font-site-serif);
+  html[data-language="zh"] body,
+  html[data-language="zh"] body *,
+  html[data-language="zh"] .font-serif {
+    font-family: var(--font-site-serif) !important;
   }
 
   * {
@@ -234,6 +236,7 @@
     }
   }
 }
+
 
 
 
