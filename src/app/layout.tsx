@@ -1,9 +1,9 @@
 ﻿import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import "@fontsource/noto-serif-sc/chinese-simplified-400.css";
-import "@fontsource/noto-serif-sc/chinese-simplified-500.css";
-import "@fontsource/noto-serif-sc/chinese-simplified-600.css";
-import "@fontsource/noto-serif-sc/chinese-simplified-700.css";
+import "@fontsource/noto-serif-sc/400.css";
+import "@fontsource/noto-serif-sc/500.css";
+import "@fontsource/noto-serif-sc/600.css";
+import "@fontsource/noto-serif-sc/700.css";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -37,6 +37,7 @@ export default function RootLayout({
     </html>
   );
 }
+
 
 
 
