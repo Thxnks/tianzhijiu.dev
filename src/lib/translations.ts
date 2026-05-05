@@ -5,6 +5,7 @@ export const translations = {
     languageLabel: '中文',
     nav: {
       projects: 'Projects',
+      resources: 'Resources',
       skills: 'Skills',
       about: 'About',
       journey: 'Journey',
@@ -42,6 +43,30 @@ export const translations = {
           keyFeatures: ['Responsive personal portfolio homepage', 'Project showcase section', 'Skills and learning journey sections', 'Light / dark theme support', 'Smooth scroll and subtle animations'],
           built: ['Built a modern portfolio website with Next.js and Tailwind CSS.', 'Designed sections for projects, skills, about, journey, and contact.', 'Added theme switching, scroll animations, and back-to-top interaction.'],
           learned: ['Learned how to structure a personal portfolio website.', 'Practiced responsive layout and component-based frontend development.', 'Improved UI polish through spacing, typography, and animation tuning.'],
+        },
+      },
+    },
+    resources: {
+      eyebrow: 'Learning Resources',
+      title: 'Learning Resources',
+      description: 'A curated learning map for my Java backend foundation and AI Agent development path.',
+      visit: 'Visit Resource',
+      groups: {
+        backendFundamentals: 'Backend Fundamentals',
+        aiAgentLearning: 'AI Agent Learning',
+      },
+      items: {
+        javaGuide: {
+          description: 'A structured Java backend guide for interviews and system design.',
+        },
+        xiaolinCoding: {
+          description: 'Visual notes for CS fundamentals, MySQL, Redis, networks, OS, and backend interviews.',
+        },
+        helloAgents: {
+          description: 'A Chinese AI Agents tutorial focused on core principles, agent architecture, classic paradigms, and building AI Native Agents.',
+        },
+        huggingFaceAgents: {
+          description: 'A hands-on agents course covering agent fundamentals, tools, smolagents, LangGraph, LlamaIndex, Agentic RAG, observability, and final projects.',
         },
       },
     },
@@ -86,6 +111,7 @@ export const translations = {
     languageLabel: 'EN',
     nav: {
       projects: '项目',
+      resources: '资料库',
       skills: '技能',
       about: '关于我',
       journey: '经历',
@@ -123,6 +149,30 @@ export const translations = {
           keyFeatures: ['Responsive personal portfolio homepage', 'Project showcase section', 'Skills and learning journey sections', 'Light / dark theme support', 'Smooth scroll and subtle animations'],
           built: ['使用 Next.js 和 Tailwind CSS 搭建个人作品集网站。', '设计 projects、skills、about、journey 和 contact 等页面区块。', '加入 theme switching、scroll animations 和 back-to-top interaction。'],
           learned: ['学习了个人作品集网站的组织方式。', '练习了 responsive layout 和 component-based frontend development。', '通过间距、字体和动画调整提升了 UI 细节。'],
+        },
+      },
+    },
+    resources: {
+      eyebrow: '学习资料库',
+      title: '学习资料库',
+      description: '这里整理了我在学习 Java 后端和 AI Agent 开发过程中参考的资料，用来补齐后端基础、计算机基础、智能体原理和工程实践。',
+      visit: '查看资料',
+      groups: {
+        backendFundamentals: '后端基础',
+        aiAgentLearning: 'AI Agent 学习',
+      },
+      items: {
+        javaGuide: {
+          description: '系统化的 Java 后端学习与面试指南，适合梳理基础、框架、数据库和系统设计。',
+        },
+        xiaolinCoding: {
+          description: '图解风格的后端基础资料，适合补计算机网络、操作系统、MySQL、Redis 和面试知识。',
+        },
+        helloAgents: {
+          description: 'Datawhale 的 AI Agents 中文教程，适合系统理解智能体核心原理、架构设计、经典范式和 AI Native Agent 构建思路。',
+        },
+        huggingFaceAgents: {
+          description: 'Hugging Face 的 AI Agents 实践课程，覆盖智能体基础、工具调用、smolagents、LangGraph、LlamaIndex、Agentic RAG、可观测性和最终项目。',
         },
       },
     },
@@ -164,3 +214,7 @@ export const translations = {
     },
   },
 } as const
+
+
+
+

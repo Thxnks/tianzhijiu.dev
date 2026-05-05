@@ -5,6 +5,7 @@ import { BackToTop } from "@/components/back-to-top"
 import HeroSection from "@/components/hero-section-1"
 import { LanguageProvider, useLanguage } from "@/components/language-provider"
 import { ProjectsSection } from "@/components/projects-section"
+import { ResourcesSection } from "@/components/resources-section"
 import { RevealSection } from "@/components/reveal-section"
 
 const skillGroups = [
@@ -46,6 +47,16 @@ function HomeContent() {
           </div>
         </RevealSection>
 
+        <RevealSection id="resources" className="scroll-mt-24 py-24">
+          <div className="mx-auto max-w-5xl px-6">
+            <p data-reveal style={{ '--reveal-delay': '0ms' } as CSSProperties} className="text-left text-sm font-medium uppercase tracking-wider md:text-base text-muted-foreground">{t.resources.eyebrow}</p>
+            <h2 data-reveal style={{ '--reveal-delay': '120ms' } as CSSProperties} className="mt-3 text-left font-serif text-2xl font-medium md:text-3xl">{t.resources.title}</h2>
+            <p data-reveal style={{ '--reveal-delay': '180ms' } as CSSProperties} className="mt-4 max-w-3xl text-base leading-7 text-muted-foreground md:text-lg md:leading-8">
+              {t.resources.description}
+            </p>
+            <ResourcesSection />
+          </div>
+        </RevealSection>
         <RevealSection id="skills" className="scroll-mt-24 py-24">
           <div className="mx-auto max-w-5xl px-6">
             <p data-reveal style={{ '--reveal-delay': '0ms' } as CSSProperties} className="text-left text-sm font-medium uppercase tracking-wider md:text-base text-muted-foreground">{t.skills.eyebrow}</p>
@@ -150,5 +161,7 @@ export default function Home() {
     </LanguageProvider>
   )
 }
+
+
 
 

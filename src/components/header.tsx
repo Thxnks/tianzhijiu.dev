@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import React from 'react'
 import Link from 'next/link'
@@ -8,6 +8,7 @@ import { cn } from '@/lib/utils'
 
 const menuItems = [
     { key: 'projects', href: '#projects', id: 'projects' },
+    { key: 'resources', href: '#resources', id: 'resources' },
     { key: 'skills', href: '#skills', id: 'skills' },
     { key: 'about', href: '#about', id: 'about' },
     { key: 'journey', href: '#journey', id: 'journey' },
@@ -122,7 +123,7 @@ export const HeroHeader = () => {
                         </div>
 
                         <div className="absolute left-1/2 top-1/2 hidden -translate-x-1/2 -translate-y-1/2 lg:block">
-                            <ul className="flex items-center justify-center gap-8">
+                            <ul className="flex items-center justify-center gap-6">
                                 {menuItems.map((item) => {
                                     const isActive = activeSection === item.id
 
@@ -175,4 +176,6 @@ export const HeroHeader = () => {
         </header>
     )
 }
+
+
 
