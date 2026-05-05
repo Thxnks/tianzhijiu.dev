@@ -15,12 +15,40 @@ const menuItems = [
     { key: 'contact', href: '#contact', id: 'contact' },
 ] as const
 
+type NavId = (typeof menuItems)[number]['id']
+
+const headerOffset = 96
+
 export const HeroHeader = () => {
     const { t, toggleLanguage } = useLanguage()
     const [menuState, setMenuState] = React.useState(false)
     const [isScrolled, setIsScrolled] = React.useState(false)
-    const [activeSection, setActiveSection] = React.useState('')
+    const [activeSection, setActiveSection] = React.useState<NavId>('projects')
     const [theme, setTheme] = React.useState<'light' | 'dark'>('light')
+    const scrollLockTimeoutRef = React.useRef<number | null>(null)
+
+    const updateActiveSection = React.useCallback(() => {
+        if (scrollLockTimeoutRef.current) return
+
+        const scrollPosition = window.scrollY + headerOffset + 48
+        const documentBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 8
+
+        if (documentBottom) {
+            setActiveSection('contact')
+            return
+        }
+
+        const currentItem = menuItems.reduce<(typeof menuItems)[number] | null>((current, item) => {
+            const section = document.getElementById(item.id)
+            if (!section) return current
+
+            return section.offsetTop <= scrollPosition ? item : current
+        }, null)
+
+        if (currentItem) {
+            setActiveSection(currentItem.id)
+        }
+    }, [])
 
     React.useEffect(() => {
         const savedTheme = window.localStorage.getItem('theme')
@@ -33,12 +61,17 @@ export const HeroHeader = () => {
     React.useEffect(() => {
         const handleScroll = () => {
             setIsScrolled(window.scrollY > 50)
+            updateActiveSection()
         }
 
         handleScroll()
         window.addEventListener('scroll', handleScroll, { passive: true })
-        return () => window.removeEventListener('scroll', handleScroll)
-    }, [])
+        window.addEventListener('resize', handleScroll)
+        return () => {
+            window.removeEventListener('scroll', handleScroll)
+            window.removeEventListener('resize', handleScroll)
+        }
+    }, [updateActiveSection])
 
     React.useEffect(() => {
         const sections = menuItems
@@ -49,23 +82,57 @@ export const HeroHeader = () => {
 
         const observer = new IntersectionObserver(
             (entries) => {
+                if (scrollLockTimeoutRef.current) return
+
                 const visibleEntry = entries
                     .filter((entry) => entry.isIntersecting)
                     .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0]
 
                 if (visibleEntry?.target.id) {
-                    setActiveSection(visibleEntry.target.id)
+                    setActiveSection(visibleEntry.target.id as NavId)
                 }
             },
             {
-                rootMargin: '-25% 0px -60% 0px',
+                rootMargin: '-30% 0px -55% 0px',
                 threshold: [0.15, 0.25, 0.5],
             }
         )
 
         sections.forEach((section) => observer.observe(section))
-        return () => observer.disconnect()
-    }, [])
+        updateActiveSection()
+        return () => {
+            observer.disconnect()
+            if (scrollLockTimeoutRef.current) {
+                window.clearTimeout(scrollLockTimeoutRef.current)
+            }
+        }
+    }, [updateActiveSection])
+
+    const handleNavClick = (event: React.MouseEvent<HTMLAnchorElement>, id: NavId) => {
+        event.preventDefault()
+
+        const target = document.getElementById(id)
+        if (!target) return
+
+        if (scrollLockTimeoutRef.current) {
+            window.clearTimeout(scrollLockTimeoutRef.current)
+        }
+
+        setActiveSection(id)
+        setMenuState(false)
+        window.history.pushState(null, '', `#${id}`)
+
+        const elementTop = target.getBoundingClientRect().top + window.scrollY
+        window.scrollTo({
+            top: Math.max(elementTop - headerOffset, 0),
+            behavior: 'smooth',
+        })
+
+        scrollLockTimeoutRef.current = window.setTimeout(() => {
+            scrollLockTimeoutRef.current = null
+            updateActiveSection()
+        }, 900)
+    }
 
     const toggleTheme = () => {
         const nextTheme = theme === 'dark' ? 'light' : 'dark'
@@ -103,7 +170,7 @@ export const HeroHeader = () => {
             <nav
                 data-state={menuState && 'active'}
                 className={cn(
-                    'fixed z-20 w-full transition-all duration-300',
+                    'fixed z-50 w-full transition-all duration-300',
                     isScrolled && 'border-b border-black/5 bg-background/75 backdrop-blur-lg dark:border-white/10 dark:bg-[#24211d]/75'
                 )}>
                 <div className="mx-auto max-w-5xl px-6">
@@ -112,7 +179,7 @@ export const HeroHeader = () => {
                             <button
                                 onClick={() => setMenuState(!menuState)}
                                 aria-label={menuState == true ? 'Close Menu' : 'Open Menu'}
-                                className="relative z-20 -m-2.5 -mr-4 block cursor-pointer p-2.5 text-foreground transition-colors duration-300 lg:hidden">
+                                className="relative z-50 -m-2.5 -mr-4 block cursor-pointer p-2.5 text-foreground transition-colors duration-300 lg:hidden">
                                 <Menu className="in-data-[state=active]:rotate-180 in-data-[state=active]:scale-0 in-data-[state=active]:opacity-0 m-auto size-6 duration-200" />
                                 <X className="in-data-[state=active]:rotate-0 in-data-[state=active]:scale-100 in-data-[state=active]:opacity-100 absolute inset-0 m-auto size-6 -rotate-180 scale-0 opacity-0 duration-200" />
                             </button>
@@ -123,19 +190,28 @@ export const HeroHeader = () => {
                         </div>
 
                         <div className="absolute left-1/2 top-1/2 hidden -translate-x-1/2 -translate-y-1/2 lg:block">
-                            <ul className="flex items-center justify-center gap-6">
+                            <ul className="flex items-center justify-center gap-5 whitespace-nowrap">
                                 {menuItems.map((item) => {
                                     const isActive = activeSection === item.id
 
                                     return (
-                                        <li key={item.id}>
+                                        <li key={item.id} className="shrink-0">
                                             <Link
                                                 href={item.href}
+                                                onClick={(event) => handleNavClick(event, item.id)}
+                                                aria-current={isActive ? 'page' : undefined}
                                                 className={cn(
-                                                    'relative px-1 py-2 font-serif text-xl text-muted-foreground transition-colors duration-200 after:absolute after:left-0 after:top-full after:h-px after:w-full after:origin-center after:scale-x-0 after:bg-foreground after:transition-transform after:duration-200 hover:text-foreground dark:after:bg-[#b99572]',
-                                                    isActive && 'text-foreground after:scale-x-100 dark:text-[#f6efe5]'
+                                                    'relative inline-flex min-w-fit shrink-0 items-center whitespace-nowrap px-2 py-2 font-serif text-lg text-muted-foreground transition-colors duration-200 hover:text-foreground xl:text-xl',
+                                                    isActive && 'text-foreground dark:text-[#f6efe5]'
                                                 )}>
-                                                {t.nav[item.key]}
+                                                <span className="whitespace-nowrap">{t.nav[item.key]}</span>
+                                                <span
+                                                    aria-hidden="true"
+                                                    className={cn(
+                                                        'pointer-events-none absolute left-2 right-2 -bottom-1 h-px origin-center scale-x-0 bg-foreground opacity-0 transition-[opacity,transform] duration-150 ease-out dark:bg-[#b99572]',
+                                                        isActive && 'scale-x-100 opacity-100'
+                                                    )}
+                                                />
                                             </Link>
                                         </li>
                                     )
@@ -153,12 +229,20 @@ export const HeroHeader = () => {
                                             <li key={item.id}>
                                                 <Link
                                                     href={item.href}
-                                                    onClick={() => setMenuState(false)}
+                                                    onClick={(event) => handleNavClick(event, item.id)}
+                                                    aria-current={isActive ? 'page' : undefined}
                                                     className={cn(
-                                                        'block font-serif text-xl text-muted-foreground underline-offset-4 transition-colors duration-150 hover:text-foreground',
-                                                        isActive && 'text-foreground underline dark:text-[#f6efe5]'
+                                                        'relative inline-flex min-w-fit shrink-0 items-center whitespace-nowrap px-1 py-1 font-serif text-xl text-muted-foreground transition-colors duration-150 hover:text-foreground',
+                                                        isActive && 'text-foreground dark:text-[#f6efe5]'
                                                     )}>
-                                                    <span>{t.nav[item.key]}</span>
+                                                    <span className="whitespace-nowrap">{t.nav[item.key]}</span>
+                                                    <span
+                                                        aria-hidden="true"
+                                                        className={cn(
+                                                            'pointer-events-none absolute left-1 right-1 -bottom-1 h-px origin-center scale-x-0 bg-foreground opacity-0 transition-[opacity,transform] duration-150 ease-out dark:bg-[#b99572]',
+                                                            isActive && 'scale-x-100 opacity-100'
+                                                        )}
+                                                    />
                                                 </Link>
                                             </li>
                                         )
@@ -176,6 +260,4 @@ export const HeroHeader = () => {
         </header>
     )
 }
-
-
 
