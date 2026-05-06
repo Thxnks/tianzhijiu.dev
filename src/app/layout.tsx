@@ -1,4 +1,5 @@
 ﻿import type { Metadata } from "next";
+import Script from "next/script";
 import { Geist, Geist_Mono } from "next/font/google";
 import "@fontsource/noto-serif-sc/400.css";
 import "@fontsource/noto-serif-sc/500.css";
@@ -16,6 +17,7 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const themeLanguageInitScript = `(function(){try{var theme=localStorage.getItem('theme');if(theme==='dark'){document.documentElement.classList.add('dark');}var language=localStorage.getItem('language')==='zh'?'zh':'en';document.documentElement.dataset.language=language;document.documentElement.lang=language==='zh'?'zh-CN':'en';}catch(e){}})();`;
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -34,7 +36,11 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
-        <script dangerouslySetInnerHTML={{ __html: `(function(){try{var theme=localStorage.getItem('theme');if(theme==='dark'){document.documentElement.classList.add('dark');}var language=localStorage.getItem('language')==='zh'?'zh':'en';document.documentElement.dataset.language=language;document.documentElement.lang=language==='zh'?'zh-CN':'en';}catch(e){}})();` }} />
+        <Script
+          id="theme-language-init"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{ __html: themeLanguageInitScript }}
+        />
         <span
           id="font-debug-zh"
           data-font-debug
@@ -56,12 +62,3 @@ export default function RootLayout({
     </html>
   );
 }
-
-
-
-
-
-
-
-
-

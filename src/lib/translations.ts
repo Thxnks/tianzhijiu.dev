@@ -22,23 +22,35 @@ export const translations = {
       title: 'Selected Work',
       github: 'GitHub',
       details: 'Details',
+      backendHighlights: 'Backend Highlights',
+      fullTechStack: 'Full Tech Stack',
       keyFeatures: 'Key Features',
       whatIBuilt: 'What I Built',
       whatILearned: 'What I Learned',
       items: {
         aiCodeHelper: {
-          description: 'An AI-powered coding coach for algorithm practice, backend interview preparation, and project learning.',
-          keyFeatures: ['SSE streaming chat responses', 'Multi-session memory', 'Role-based AI tutoring', 'Hot100 problem context support', 'Basic RAG and tool calling'],
-          built: ['Built the backend AI chat flow with Spring Boot and LangChain4j.', 'Integrated DashScope/Qwen for AI responses.', 'Connected algorithm problem context with the chat experience.'],
-          learned: ['Learned how to integrate LLM APIs into backend services.', 'Practiced SSE streaming, session memory, and AI tool invocation.', 'Understood how AI applications can be structured as backend projects.'],
-        },
-        citylifeReview: {
-          description: 'A local life review platform focused on backend APIs, caching, message queues, and practical business logic.',
-          keyFeatures: ['User review and local life content management', 'Redis-based caching', 'RabbitMQ message queue integration', 'MySQL data persistence', 'Backend API design'],
-          built: ['Built core backend APIs with Spring Boot.', 'Used MySQL for business data storage.', 'Practiced Redis caching and RabbitMQ asynchronous processing.'],
-          learned: ['Learned how caching improves backend performance.', 'Practiced message queue usage in real business scenarios.', 'Improved understanding of backend project structure and API design.'],
-        },
-        personalPortfolio: {
+          description: 'A full-stack AI coding assistant built with Spring Boot 3, Vue 3, and LangChain4j, combining AI chat, user authentication, conversation persistence, and Hot100 training analytics.',
+          highlights: [
+            'Built a Spring Boot 3 backend with Spring Security, JWT access/refresh token authentication, and user account management.',
+            'Integrated LangChain4j with DashScope to provide AI chat and coding assistance.',
+            'Designed conversation session and message persistence for multi-turn AI interactions.',
+            'Built Hot100 problem APIs, progress tracking, recommendation, study plan, and learning analytics features.',
+            'Used Flyway migrations and JPA schema validation to manage database evolution safely.',
+            'Added Redis cache for Hot100 read APIs, recommendations, study plans, and tag mastery, with cache invalidation after progress updates.',
+            'Designed async task APIs for heavy recommendation and study-plan generation.',
+            'Provided Docker Compose deployment for frontend, backend, MySQL, Redis, and RabbitMQ.',
+          ],
+        },        citylifeReview: {
+          description: 'A Spring Boot backend service for a local life-review platform, focusing on Redis-based business features, cache design, GEO search, social feeds, and reliable high-concurrency voucher ordering.',
+          highlights: [
+            'Implemented phone-code login with Redis token storage.',
+            'Built Redis-based shop caching, shop type caching, GEO nearby search, ZSet likes/feed, Set follow relationships, and Bitmap daily sign-in.',
+            'Used Redis Lua scripts to atomically check voucher stock and one-user-one-order constraints.',
+            'Designed asynchronous voucher order creation with RabbitMQ, including publisher confirm, return callback, manual ACK, dead-letter queue, and compensation for stale processing orders.',
+            'Combined Redisson user-level locks and MySQL unique indexes to prevent duplicate orders under concurrency.',
+            'Provided Docker Compose deployment for the application, MySQL, Redis, and RabbitMQ.',
+          ],
+        },        personalPortfolio: {
           description: 'A personal website built to showcase projects, technical skills, learning journey, and contact information.',
           keyFeatures: ['Responsive personal portfolio homepage', 'Project showcase section', 'Skills and learning journey sections', 'Light / dark theme support', 'Smooth scroll and subtle animations'],
           built: ['Built a modern portfolio website with Next.js and Tailwind CSS.', 'Designed sections for projects, skills, about, journey, and contact.', 'Added theme switching, scroll animations, and back-to-top interaction.'],
@@ -128,23 +140,35 @@ export const translations = {
       title: '精选作品',
       github: 'GitHub',
       details: '详情',
+      backendHighlights: '后端亮点',
+      fullTechStack: '完整技术栈',
       keyFeatures: '核心功能',
       whatIBuilt: '我做了什么',
       whatILearned: '学到了什么',
       items: {
         aiCodeHelper: {
-          description: '一个面向算法练习、后端面试和项目学习的 AI 编程辅导工具。',
-          keyFeatures: ['SSE streaming chat responses', 'Multi-session memory', 'Role-based AI tutoring', 'Hot100 problem context support', 'Basic RAG and tool calling'],
-          built: ['使用 Spring Boot 和 LangChain4j 搭建后端 AI 对话流程。', '接入 DashScope/Qwen 生成 AI 回复。', '将算法题上下文接入聊天体验。'],
-          learned: ['了解了 LLM API 接入后端服务的基本方式。', '实践了 SSE streaming、session memory 和 AI tool invocation。', '理解了 AI 应用如何按后端项目的方式组织。'],
-        },
-        citylifeReview: {
-          description: '一个本地生活点评平台，重点练习后端 API、缓存、消息队列和业务逻辑设计。',
-          keyFeatures: ['User review and local life content management', 'Redis-based caching', 'RabbitMQ message queue integration', 'MySQL data persistence', 'Backend API design'],
-          built: ['使用 Spring Boot 构建核心后端 API。', '使用 MySQL 存储业务数据。', '实践 Redis caching 和 RabbitMQ asynchronous processing。'],
-          learned: ['理解了 caching 对后端性能的提升作用。', '在接近真实业务的场景中练习 message queue。', '加深了对后端项目结构和 API design 的理解。'],
-        },
-        personalPortfolio: {
+          description: '一个基于 Spring Boot 3、Vue 3 和 LangChain4j 的 AI 编程助手项目，结合 AI 对话、用户认证、会话持久化和 Hot100 刷题训练分析。',
+          highlights: [
+            '基于 Spring Boot 3 和 Spring Security 实现用户注册、登录、JWT access/refresh token 认证和用户账户管理。',
+            '集成 LangChain4j 与 DashScope，提供 AI 对话和编程辅助能力。',
+            '设计会话与消息持久化，支持多轮 AI 对话记录管理。',
+            '构建 Hot100 题库、刷题进度、推荐、学习计划和学习分析相关 API。',
+            '使用 Flyway 管理数据库迁移，并通过 JPA schema validate 避免运行时表结构漂移。',
+            '使用 Redis 缓存 Hot100 题目读取、推荐、学习计划和标签掌握度，并在进度更新后做缓存失效。',
+            '为推荐和学习计划生成设计异步任务接口，避免重计算阻塞同步请求。',
+            '提供 Docker Compose 部署，统一启动前端、后端、MySQL、Redis 和 RabbitMQ。',
+          ],
+        },        citylifeReview: {
+          description: '一个本地生活点评平台后端项目，重点实践 Redis 业务场景、缓存设计、GEO 附近商铺、社交 Feed 流，以及高并发优惠券秒杀下单的可靠性设计。',
+          highlights: [
+            '基于 Redis 实现短信验证码登录和 token 状态存储。',
+            '使用 Redis 缓存、GEO、ZSet、Set、Bitmap 分别支持商铺缓存、附近商铺、点赞排行、关注关系、Feed 流和连续签到。',
+            '使用 Redis Lua 脚本原子校验库存和一人一单约束，减少高并发下的超卖风险。',
+            '基于 RabbitMQ 实现优惠券订单异步创建，加入 publisher confirm、return callback、手动 ACK、死信队列和超时订单补偿。',
+            '结合 Redisson 用户级锁和 MySQL 唯一索引，防止并发重复下单。',
+            '提供 Docker Compose 部署，统一启动应用、MySQL、Redis 和 RabbitMQ。',
+          ],
+        },        personalPortfolio: {
           description: '这个网站本身，用来展示我的项目、技术方向、学习经历和联系方式。',
           keyFeatures: ['Responsive personal portfolio homepage', 'Project showcase section', 'Skills and learning journey sections', 'Light / dark theme support', 'Smooth scroll and subtle animations'],
           built: ['使用 Next.js 和 Tailwind CSS 搭建个人作品集网站。', '设计 projects、skills、about、journey 和 contact 等页面区块。', '加入 theme switching、scroll animations 和 back-to-top interaction。'],
@@ -214,6 +238,7 @@ export const translations = {
     },
   },
 } as const
+
 
 
 

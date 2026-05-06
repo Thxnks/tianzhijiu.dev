@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import React from 'react'
 import { ChevronDown } from 'lucide-react'
@@ -8,21 +8,24 @@ import { cn } from '@/lib/utils'
 const projects = [
   {
     key: 'aiCodeHelper',
-    title: 'AI Code Helper',
+    title: 'AI Code Helper For Hot100',
     github: 'https://github.com/Thxnks/AI-Code-Helper-For-Hot100',
-    stack: ['Spring Boot', 'LangChain4j', 'DashScope', 'Vue', 'SSE', 'RAG'],
+    stack: ['Java', 'Spring Boot 3', 'Spring Security', 'Vue 3', 'LangChain4j', 'DashScope'],
+    fullStack: ['Java', 'Spring Boot 3', 'Spring Security', 'Vue 3', 'LangChain4j', 'DashScope', 'MySQL', 'Redis', 'RabbitMQ', 'Flyway', 'Docker'],
   },
   {
     key: 'citylifeReview',
-    title: 'Citylife Review',
+    title: 'CityLife Review',
     github: 'https://github.com/Thxnks/Citylife-review',
-    stack: ['Spring Boot', 'MySQL', 'Redis', 'RabbitMQ', 'Docker'],
+    stack: ['Java', 'Spring Boot', 'MyBatis-Plus', 'MySQL', 'Redis', 'RabbitMQ'],
+    fullStack: ['Java', 'Spring Boot', 'MyBatis-Plus', 'MySQL', 'Redis', 'Redisson', 'RabbitMQ', 'Lua', 'Docker'],
   },
   {
     key: 'personalPortfolio',
     title: 'Personal Portfolio',
     github: 'https://github.com/Thxnks/tianzhijiu.dev',
     stack: ['Next.js', 'Tailwind CSS', 'shadcn/ui', 'Vercel'],
+    fullStack: ['Next.js', 'Tailwind CSS', 'shadcn/ui', 'Vercel'],
   },
 ] as const
 
@@ -33,11 +36,28 @@ function DetailGroup({ title, items }: { title: string; items: readonly string[]
       <ul className="mt-2 space-y-1.5 text-base leading-7 text-muted-foreground">
         {items.map((item) => (
           <li key={item} className="flex gap-2">
-            <span className="mt-2 size-1 rounded-full bg-muted-foreground/60" />
+            <span className="mt-2 size-1 shrink-0 rounded-full bg-muted-foreground/60" />
             <span>{item}</span>
           </li>
         ))}
       </ul>
+    </div>
+  )
+}
+
+function TechStack({ title, stack }: { title: string; stack: readonly string[] }) {
+  return (
+    <div>
+      <h4 className="font-serif text-base font-medium text-foreground md:text-lg">{title}</h4>
+      <div className="mt-3 flex flex-wrap gap-2">
+        {stack.map((tech) => (
+          <span
+            key={tech}
+            className="rounded-full border border-zinc-200/80 bg-white/70 px-3 py-1.5 font-serif text-sm text-muted-foreground shadow-sm dark:border-white/10 dark:bg-[#34302a]/75 dark:text-[#c8baaa]">
+            {tech}
+          </span>
+        ))}
+      </div>
     </div>
   )
 }
@@ -59,6 +79,7 @@ export function ProjectsSection() {
       {projects.map((project) => {
         const isOpen = expandedProjects.includes(project.title)
         const content = t.projects.items[project.key]
+        const hasBackendHighlights = 'highlights' in content
 
         return (
           <article
@@ -105,10 +126,19 @@ export function ProjectsSection() {
                 isOpen ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'
               )}>
               <div className="min-h-0">
-                <div className="mt-5 grid gap-5 rounded-xl border border-zinc-200/80 bg-white/45 p-4 shadow-sm backdrop-blur-sm dark:border-white/10 dark:bg-[#34302a]/45 md:grid-cols-3 md:p-5">
-                  <DetailGroup title={t.projects.keyFeatures} items={content.keyFeatures} />
-                  <DetailGroup title={t.projects.whatIBuilt} items={content.built} />
-                  <DetailGroup title={t.projects.whatILearned} items={content.learned} />
+                <div className="mt-5 rounded-xl border border-zinc-200/80 bg-white/45 p-4 shadow-sm backdrop-blur-sm dark:border-white/10 dark:bg-[#34302a]/45 md:p-5">
+                  {hasBackendHighlights ? (
+                    <div className="grid gap-5 md:grid-cols-[1fr_16rem] md:gap-6">
+                      <DetailGroup title={t.projects.backendHighlights} items={content.highlights} />
+                      <TechStack title={t.projects.fullTechStack} stack={project.fullStack} />
+                    </div>
+                  ) : (
+                    <div className="grid gap-5 md:grid-cols-3">
+                      <DetailGroup title={t.projects.keyFeatures} items={content.keyFeatures} />
+                      <DetailGroup title={t.projects.whatIBuilt} items={content.built} />
+                      <DetailGroup title={t.projects.whatILearned} items={content.learned} />
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
@@ -118,4 +148,3 @@ export function ProjectsSection() {
     </div>
   )
 }
-
