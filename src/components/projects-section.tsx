@@ -53,7 +53,7 @@ function TechStack({ title, stack }: { title: string; stack: readonly string[] }
         {stack.map((tech) => (
           <span
             key={tech}
-            className="rounded-full border border-zinc-200/80 bg-white/70 px-3 py-1.5 font-serif text-sm text-muted-foreground shadow-sm dark:border-white/10 dark:bg-[#34302a]/75 dark:text-[#c8baaa]">
+            className="rounded-full border border-black/5 bg-white/55 px-3 py-1.5 font-serif text-sm text-black/65 shadow-[0_1px_2px_rgba(0,0,0,0.03)] transition-colors duration-300 group-hover:border-black/10 group-hover:bg-white/80 group-hover:text-black/75 dark:border-white/10 dark:bg-white/[0.06] dark:text-[#d7ccbf] dark:group-hover:border-white/15 dark:group-hover:bg-white/[0.1] dark:group-hover:text-[#f0e5d8]">
             {tech}
           </span>
         ))}
@@ -84,7 +84,7 @@ export function ProjectsSection() {
         return (
           <article
             key={project.title}
-            className="group py-5 transition-colors duration-300 hover:bg-zinc-50/70 dark:hover:bg-white/[0.04]">
+            className="group relative rounded-2xl border border-transparent px-4 py-6 transition-all duration-300 ease-out hover:-translate-y-0.5 hover:border-black/5 hover:bg-white/55 hover:shadow-[0_12px_35px_rgba(0,0,0,0.05)] dark:hover:border-white/10 dark:hover:bg-white/[0.06] dark:hover:shadow-[0_14px_36px_rgba(0,0,0,0.22)] md:px-6">
             <div className="grid gap-4 md:grid-cols-[1fr_20rem] md:items-center md:gap-6">
               <div>
                 <h3 className="font-serif text-xl font-medium md:text-2xl">{project.title}</h3>
@@ -95,7 +95,7 @@ export function ProjectsSection() {
                   {project.stack.map((tech) => (
                     <span
                       key={tech}
-                      className="rounded-full border border-zinc-200/80 bg-white/70 px-3 py-1.5 font-serif text-sm text-muted-foreground shadow-sm dark:border-white/10 dark:bg-[#34302a]/75 dark:text-[#c8baaa]">
+                      className="rounded-full border border-black/5 bg-white/55 px-3 py-1.5 font-serif text-sm text-black/65 shadow-[0_1px_2px_rgba(0,0,0,0.03)] transition-colors duration-300 group-hover:border-black/10 group-hover:bg-white/80 group-hover:text-black/75 dark:border-white/10 dark:bg-white/[0.06] dark:text-[#d7ccbf] dark:group-hover:border-white/15 dark:group-hover:bg-white/[0.1] dark:group-hover:text-[#f0e5d8]">
                       {tech}
                     </span>
                   ))}
@@ -105,14 +105,14 @@ export function ProjectsSection() {
                     href={project.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex h-9 items-center justify-center rounded-full border border-zinc-200/80 bg-white/70 px-4 font-serif text-sm font-medium text-foreground shadow-sm transition-transform duration-300 group-hover:-translate-y-0.5 dark:border-white/10 dark:bg-[#34302a]/75 dark:text-[#f6efe5] dark:hover:bg-[#3d372f]">
+                    className="inline-flex h-9 items-center justify-center rounded-full border border-black/5 bg-white/55 px-4 font-serif text-sm font-medium text-foreground shadow-[0_1px_2px_rgba(0,0,0,0.03)] transition-colors duration-300 group-hover:border-black/10 group-hover:bg-white/80 dark:border-white/10 dark:bg-white/[0.06] dark:text-[#f6efe5] dark:group-hover:border-white/15 dark:group-hover:bg-white/[0.1]">
                     {t.projects.github}
                   </a>
                   <button
                     type="button"
                     aria-expanded={isOpen}
                     onClick={() => toggleProject(project.title)}
-                    className="inline-flex h-8 items-center justify-center gap-1 rounded-full border border-zinc-200/80 bg-white/70 px-3.5 font-serif text-xs font-medium text-foreground shadow-sm transition-all duration-300 hover:-translate-y-0.5 dark:border-white/10 dark:bg-[#34302a]/75 dark:text-[#f6efe5] dark:hover:bg-[#3d372f]">
+                    className="inline-flex h-8 items-center justify-center gap-1 rounded-full border border-black/5 bg-white/55 px-3.5 font-serif text-xs font-medium text-foreground shadow-[0_1px_2px_rgba(0,0,0,0.03)] transition-colors duration-300 group-hover:border-black/10 group-hover:bg-white/80 dark:border-white/10 dark:bg-white/[0.06] dark:text-[#f6efe5] dark:group-hover:border-white/15 dark:group-hover:bg-white/[0.1]">
                     {t.projects.details}
                     <ChevronDown className={cn('size-3.5 transition-transform duration-300', isOpen && 'rotate-180')} />
                   </button>
@@ -148,3 +148,4 @@ export function ProjectsSection() {
     </div>
   )
 }
+

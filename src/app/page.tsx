@@ -57,10 +57,10 @@ function HomeContent() {
             <div className="max-w-3xl">
               <p data-reveal style={{ '--reveal-delay': '0ms' } as CSSProperties} className="text-left text-sm font-medium uppercase tracking-wider md:text-base text-muted-foreground">{t.skills.eyebrow}</p>
               <h2 data-reveal style={{ '--reveal-delay': '120ms' } as CSSProperties} className="mt-3 text-left font-serif text-2xl font-medium md:text-3xl">{t.skills.title}</h2>
-              <p data-reveal style={{ '--reveal-delay': '180ms' } as CSSProperties} className="mt-5 font-serif text-xl font-medium text-foreground md:text-2xl">
+              <p data-reveal style={{ '--reveal-delay': '180ms' } as CSSProperties} className="mt-5 font-serif text-2xl font-medium text-foreground md:text-3xl">
                 {t.skills.positioning}
               </p>
-              <p data-reveal style={{ '--reveal-delay': '240ms' } as CSSProperties} className="mt-4 max-w-2xl text-base leading-7 text-muted-foreground md:text-lg md:leading-8">
+              <p data-reveal style={{ '--reveal-delay': '240ms' } as CSSProperties} className="mt-4 max-w-2xl text-lg leading-8 text-muted-foreground md:text-xl md:leading-9">
                 {t.skills.intro}
               </p>
             </div>
@@ -68,21 +68,21 @@ function HomeContent() {
               {capabilityGroups.map((group) => (
                 <article
                   key={group.key}
-                  className="group grid gap-4 py-6 transition-colors duration-300 md:grid-cols-[220px_1fr] md:gap-8">
+                  className="group relative grid gap-4 rounded-2xl border border-transparent px-4 py-6 transition-all duration-300 ease-out hover:-translate-y-0.5 hover:border-black/5 hover:bg-white/55 hover:shadow-[0_12px_35px_rgba(0,0,0,0.05)] dark:hover:border-white/10 dark:hover:bg-white/[0.06] dark:hover:shadow-[0_14px_36px_rgba(0,0,0,0.22)] md:grid-cols-[240px_1fr] md:gap-8 md:px-6">
                   <div>
                     <div className="flex items-baseline gap-3">
-                      <span className="font-serif text-sm text-muted-foreground/70 transition-colors duration-300 group-hover:text-foreground/70">{group.index}</span>
-                      <h3 className="whitespace-nowrap font-serif text-lg font-medium text-foreground transition-colors duration-300 group-hover:text-black dark:group-hover:text-[#f5efe7] md:text-xl">{t.skills.groups[group.key].title}</h3>
+                      <span className="font-serif text-sm text-black/40 transition-colors duration-300 group-hover:text-black/55 dark:text-[#b9aca0]/70 dark:group-hover:text-[#f0e5d8]/70 md:text-base">{group.index}</span>
+                      <h3 className="whitespace-nowrap font-serif text-xl font-medium text-foreground transition-colors duration-300 group-hover:text-black dark:group-hover:text-[#f5efe7] md:text-2xl">{t.skills.groups[group.key].title}</h3>
                     </div>
-                    <p className="mt-2 max-w-sm text-sm leading-6 text-muted-foreground transition-colors duration-300 group-hover:text-foreground/70 md:text-[0.95rem]">
+                    <p className="mt-2 max-w-md text-base leading-7 text-muted-foreground transition-colors duration-300 group-hover:text-foreground/75 md:text-lg">
                       {t.skills.groups[group.key].description}
                     </p>
                   </div>
-                  <div className="flex flex-wrap content-start gap-2 md:pt-1">
+                  <div className="flex flex-wrap content-start gap-2.5 md:pt-1">
                     {group.skills.map((skill) => (
                       <span
                         key={skill}
-                        className="inline-flex items-center rounded-full border border-black/5 bg-white/50 px-3 py-1 font-serif text-sm leading-5 text-black/60 shadow-[0_1px_2px_rgba(0,0,0,0.03)] transition-colors duration-300 group-hover:border-black/10 group-hover:bg-white/75 group-hover:text-black/70 dark:border-white/10 dark:bg-white/[0.05] dark:text-[#cfc4b7] dark:group-hover:border-white/15 dark:group-hover:bg-white/[0.09] dark:group-hover:text-[#f0e5d8]">
+                        className="inline-flex items-center rounded-full border border-black/5 bg-white/55 px-4 py-1.5 font-serif text-base leading-5 text-black/65 shadow-[0_1px_2px_rgba(0,0,0,0.03)] transition-colors duration-300 group-hover:border-black/10 group-hover:bg-white/80 group-hover:text-black/75 dark:border-white/10 dark:bg-white/[0.06] dark:text-[#d7ccbf] dark:group-hover:border-white/15 dark:group-hover:bg-white/[0.1] dark:group-hover:text-[#f0e5d8]">
                         {skill}
                       </span>
                     ))}
@@ -171,6 +171,7 @@ export default function Home() {
     </LanguageProvider>
   )
 }
+
 
 
 
