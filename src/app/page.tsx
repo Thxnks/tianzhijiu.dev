@@ -8,26 +8,21 @@ import { ProjectsSection } from "@/components/projects-section"
 import { ResourcesSection } from "@/components/resources-section"
 import { RevealSection } from "@/components/reveal-section"
 
-const skillGroups = [
+const capabilityGroups = [
   {
-    categoryKey: "backend",
-    skills: ["Java", "Spring Boot", "REST API"],
+    key: "backendCore",
+    index: "01",
+    skills: ["Java", "Spring Boot", "MySQL", "Redis", "RESTful API", "MyBatis-Plus"],
   },
   {
-    categoryKey: "database",
-    skills: ["MySQL", "Redis", "RabbitMQ"],
+    key: "engineeringPractice",
+    index: "02",
+    skills: ["RabbitMQ", "Redisson", "Docker", "Docker Compose", "Spring Security", "JWT", "Flyway", "Linux", "Git"],
   },
   {
-    categoryKey: "tools",
-    skills: ["Git", "Docker", "Linux"],
-  },
-  {
-    categoryKey: "frontend",
-    skills: ["Vue", "React", "Tailwind CSS"],
-  },
-  {
-    categoryKey: "ai",
-    skills: ["LLM API", "RAG basics", "AI coding tools"],
+    key: "aiApplication",
+    index: "03",
+    skills: ["LangChain4j", "DashScope", "AI Agent", "RAG", "Tool Calling", "Vue 3", "LLM API"],
   },
 ] as const
 
@@ -57,31 +52,46 @@ function HomeContent() {
             <ResourcesSection />
           </div>
         </RevealSection>
-        <RevealSection id="skills" className="scroll-mt-24 py-24">
+        <RevealSection id="skills" className="scroll-mt-24 py-20">
           <div className="mx-auto max-w-5xl px-6">
-            <p data-reveal style={{ '--reveal-delay': '0ms' } as CSSProperties} className="text-left text-sm font-medium uppercase tracking-wider md:text-base text-muted-foreground">{t.skills.eyebrow}</p>
-            <h2 data-reveal style={{ '--reveal-delay': '120ms' } as CSSProperties} className="mt-3 text-left font-serif text-2xl font-medium md:text-3xl">{t.skills.title}</h2>
-            <div data-reveal style={{ '--reveal-delay': '240ms' } as CSSProperties} className="mt-8 divide-y divide-zinc-200/80 border-y border-zinc-200/80 dark:divide-white/10 dark:border-white/10">
-              {skillGroups.map((group) => (
-                <div
-                  key={group.categoryKey}
-                  className="grid gap-3 py-4 md:grid-cols-[14rem_1fr] md:items-center md:gap-6">
-                  <p className="font-serif text-lg font-medium md:text-xl">{t.skills.categories[group.categoryKey]}</p>
-                  <div className="flex flex-wrap gap-2">
+            <div className="max-w-3xl">
+              <p data-reveal style={{ '--reveal-delay': '0ms' } as CSSProperties} className="text-left text-sm font-medium uppercase tracking-wider md:text-base text-muted-foreground">{t.skills.eyebrow}</p>
+              <h2 data-reveal style={{ '--reveal-delay': '120ms' } as CSSProperties} className="mt-3 text-left font-serif text-2xl font-medium md:text-3xl">{t.skills.title}</h2>
+              <p data-reveal style={{ '--reveal-delay': '180ms' } as CSSProperties} className="mt-5 font-serif text-xl font-medium text-foreground md:text-2xl">
+                {t.skills.positioning}
+              </p>
+              <p data-reveal style={{ '--reveal-delay': '240ms' } as CSSProperties} className="mt-4 max-w-2xl text-base leading-7 text-muted-foreground md:text-lg md:leading-8">
+                {t.skills.intro}
+              </p>
+            </div>
+            <div data-reveal style={{ '--reveal-delay': '280ms' } as CSSProperties} className="mt-10 divide-y divide-black/10 border-y border-black/10 dark:divide-white/10 dark:border-white/10">
+              {capabilityGroups.map((group) => (
+                <article
+                  key={group.key}
+                  className="group grid gap-4 py-6 transition-colors duration-300 md:grid-cols-[220px_1fr] md:gap-8">
+                  <div>
+                    <div className="flex items-baseline gap-3">
+                      <span className="font-serif text-sm text-muted-foreground/70 transition-colors duration-300 group-hover:text-foreground/70">{group.index}</span>
+                      <h3 className="whitespace-nowrap font-serif text-lg font-medium text-foreground transition-colors duration-300 group-hover:text-black dark:group-hover:text-[#f5efe7] md:text-xl">{t.skills.groups[group.key].title}</h3>
+                    </div>
+                    <p className="mt-2 max-w-sm text-sm leading-6 text-muted-foreground transition-colors duration-300 group-hover:text-foreground/70 md:text-[0.95rem]">
+                      {t.skills.groups[group.key].description}
+                    </p>
+                  </div>
+                  <div className="flex flex-wrap content-start gap-2 md:pt-1">
                     {group.skills.map((skill) => (
                       <span
                         key={skill}
-                        className="rounded-full border border-zinc-200/80 bg-white/70 px-4 py-2 font-serif text-base text-muted-foreground shadow-sm dark:border-white/10 dark:bg-[#34302a]/75 dark:text-[#c8baaa]">
+                        className="inline-flex items-center rounded-full border border-black/5 bg-white/50 px-3 py-1 font-serif text-sm leading-5 text-black/60 shadow-[0_1px_2px_rgba(0,0,0,0.03)] transition-colors duration-300 group-hover:border-black/10 group-hover:bg-white/75 group-hover:text-black/70 dark:border-white/10 dark:bg-white/[0.05] dark:text-[#cfc4b7] dark:group-hover:border-white/15 dark:group-hover:bg-white/[0.09] dark:group-hover:text-[#f0e5d8]">
                         {skill}
                       </span>
                     ))}
                   </div>
-                </div>
+                </article>
               ))}
             </div>
           </div>
         </RevealSection>
-
         <RevealSection id="about" className="scroll-mt-24 py-24">
           <div className="mx-auto max-w-5xl px-6">
             <p data-reveal style={{ '--reveal-delay': '0ms' } as CSSProperties} className="text-left text-sm font-medium uppercase tracking-wider md:text-base text-muted-foreground">{t.about.eyebrow}</p>
@@ -161,6 +171,13 @@ export default function Home() {
     </LanguageProvider>
   )
 }
+
+
+
+
+
+
+
 
 
 

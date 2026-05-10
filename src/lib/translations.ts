@@ -85,12 +85,21 @@ export const translations = {
     skills: {
       eyebrow: 'Skills',
       title: 'Technical Focus',
-      categories: {
-        backend: 'Backend',
-        database: 'Database & Middleware',
-        tools: 'Tools',
-        frontend: 'Frontend',
-        ai: 'AI',
+      positioning: 'Java Backend × AI Application',
+      intro: 'A compact map of the technologies I use in backend projects and AI-powered tools.',
+      groups: {
+        backendCore: {
+          title: 'Backend Core',
+          description: 'Core technologies for Java backend development.',
+        },
+        engineeringPractice: {
+          title: 'Engineering Practice',
+          description: 'Tools and patterns practiced in real backend projects.',
+        },
+        aiApplication: {
+          title: 'AI Application',
+          description: 'AI technologies I am learning to connect with backend systems.',
+        },
       },
     },
     about: {
@@ -203,12 +212,21 @@ export const translations = {
     skills: {
       eyebrow: '技能',
       title: '技术方向',
-      categories: {
-        backend: '后端',
-        database: '数据库与中间件',
-        tools: '开发工具',
-        frontend: '前端',
-        ai: 'AI 方向',
+      positioning: 'Java 后端 × AI 应用',
+      intro: '这里整理了我在后端项目和 AI 应用开发中主要使用、实践和探索的技术方向。',
+      groups: {
+        backendCore: {
+          title: '后端核心',
+          description: '我在 Java 后端学习和项目开发中主要使用的核心技术。',
+        },
+        engineeringPractice: {
+          title: '工程实践',
+          description: '我在实际项目中练习过的认证、消息队列、部署和工程化相关技术。',
+        },
+        aiApplication: {
+          title: 'AI 应用',
+          description: '我正在学习如何把 AI 能力接入后端系统。',
+        },
       },
     },
     about: {
@@ -238,6 +256,12 @@ export const translations = {
     },
   },
 } as const
+
+
+
+
+
+
 
 
 

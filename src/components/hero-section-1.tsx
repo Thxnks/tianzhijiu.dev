@@ -92,10 +92,10 @@ export default function HeroSection() {
 
                                 <Button
                                     asChild
-                                    className={`mt-8 h-11 px-5 pr-2 text-sm transition-all delay-300 duration-700 ease-out sm:mt-10 sm:h-12 sm:px-6 sm:text-base md:h-14 md:px-7 md:pr-3 md:text-lg lg:h-16 lg:px-9 lg:pr-4 lg:text-xl ${revealClass}`}>
+                                    className={`group mt-8 inline-flex h-11 items-center gap-3 rounded-2xl bg-neutral-950 px-5 pr-2 text-sm text-white shadow-[0_12px_30px_rgba(0,0,0,0.18)] transition-all delay-300 duration-300 ease-out will-change-transform hover:-translate-y-1.5 hover:bg-neutral-900 hover:shadow-[0_20px_45px_rgba(0,0,0,0.25)] hover:delay-0 active:translate-y-[1px] active:shadow-[0_8px_20px_rgba(0,0,0,0.18)] dark:bg-[#f5efe7] dark:text-[#1d1813] dark:shadow-[0_12px_30px_rgba(0,0,0,0.30)] dark:hover:bg-[#fff8ee] dark:hover:shadow-[0_20px_45px_rgba(0,0,0,0.38)] sm:mt-10 sm:h-12 sm:px-6 sm:text-base md:h-14 md:px-7 md:pr-3 md:text-lg lg:h-16 lg:px-9 lg:pr-4 lg:text-xl ${revealClass}`}>
                                     <Link href="#projects">
                                         <span className="text-nowrap">{t.hero.cta}</span>
-                                        <ChevronRight className="opacity-50" />
+                                        <ChevronRight className="shrink-0 opacity-55 transition-transform duration-300 ease-out group-hover:translate-x-1" />
                                     </Link>
                                 </Button>
                             </div>
@@ -116,4 +116,6 @@ export default function HeroSection() {
         </>
     )
 }
+
+
 
