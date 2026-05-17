@@ -13,7 +13,7 @@ export const translations = {
     },
     hero: {
       titleFirst: 'Hey, I am',
-      titleSecond: 'TianZhiJiu',
+      titleSecond: 'Hao Xinran',
       subtitle: 'I build thoughtful backend systems, AI-powered tools, and web experiences with clarity and purpose.',
       cta: 'Explore My Work',
     },
@@ -29,28 +29,31 @@ export const translations = {
       whatILearned: 'What I Learned',
       items: {
         aiCodeHelper: {
-          description: 'A full-stack AI coding assistant built with Spring Boot 3, Vue 3, and LangChain4j, combining AI chat, user authentication, conversation persistence, and Hot100 training analytics.',
+          description: 'A Spring Boot + Vue full-stack AI coding assistant centered on a self-built ReAct Agent Runtime for Hot100 algorithm coaching, execution tracing, and backend interview preparation.',
           highlights: [
-            'Built a Spring Boot 3 backend with Spring Security, JWT access/refresh token authentication, and user account management.',
-            'Integrated LangChain4j with DashScope to provide AI chat and coding assistance.',
-            'Designed conversation session and message persistence for multi-turn AI interactions.',
-            'Built Hot100 problem APIs, progress tracking, recommendation, study plan, and learning analytics features.',
-            'Used Flyway migrations and JPA schema validation to manage database evolution safely.',
-            'Added Redis cache for Hot100 read APIs, recommendations, study plans, and tag mastery, with cache invalidation after progress updates.',
-            'Designed async task APIs for heavy recommendation and study-plan generation.',
-            'Provided Docker Compose deployment for frontend, backend, MySQL, Redis, and RabbitMQ.',
+            'Built a custom ReAct Agent Runtime with model turns, tool calls, tool results, final answers, and up to 8 autonomous turns.',
+            'Implemented tool permission gating across READ, WRITE, EXTERNAL, and SENSITIVE levels with structured tool_result errors.',
+            'Added three-tier context compaction, structured error recovery, hook events, and step-level SSE streaming for observable agent execution.',
+            'Designed AgentTask, RuntimeSlot, and AgentStep persistence so retries, runtime traces, and executor failover can be inspected clearly.',
+            'Integrated LangChain4j with DashScope/Qwen while keeping orchestration logic inside the Spring Boot backend.',
+            'Built explainable local RAG for Hot100 markdown and JSON resources with scored retrieval results and problem metadata.',
+            'Added long-term memory for user preferences, weaknesses, wrong answers, next actions, and notes.',
+            'Used Spring Boot 3.5, Java 21, Spring Security JWT, JPA, Flyway, Redis caching, RabbitMQ, and Docker Compose for backend engineering.',
           ],
-        },        citylifeReview: {
-          description: 'A Spring Boot backend service for a local life-review platform, focusing on Redis-based business features, cache design, GEO search, social feeds, and reliable high-concurrency voucher ordering.',
+        },
+        citylifeReview: {
+          description: 'A Spring Boot backend service for a local life-review platform, focused on Redis business features, nearby shop search, social feeds, and reliable high-concurrency voucher ordering.',
           highlights: [
-            'Implemented phone-code login with Redis token storage.',
-            'Built Redis-based shop caching, shop type caching, GEO nearby search, ZSet likes/feed, Set follow relationships, and Bitmap daily sign-in.',
-            'Used Redis Lua scripts to atomically check voucher stock and one-user-one-order constraints.',
-            'Designed asynchronous voucher order creation with RabbitMQ, including publisher confirm, return callback, manual ACK, dead-letter queue, and compensation for stale processing orders.',
-            'Combined Redisson user-level locks and MySQL unique indexes to prevent duplicate orders under concurrency.',
+            'Implemented phone-code login with Redis token storage and interceptor-based user context handling.',
+            'Built Redis-backed shop caching, cache penetration protection, shop type cache invalidation, GEO nearby search, ZSet likes/feed, Set follow relationships, and Bitmap sign-in.',
+            'Used Redis Lua to atomically check voucher stock, one-user-one-order constraints, pre-deduct stock, and record purchase qualification.',
+            'Built RabbitMQ asynchronous voucher order creation with persisted PROCESSING state, publisher confirm, return callback, manual ACK, and dead-letter queue handling.',
+            'Added Redis rollback and scheduled compensation for stale PROCESSING orders to reduce Redis/MySQL inconsistency after MQ or consumer failures.',
+            'Combined Redisson user-level locks and MySQL unique indexes to prevent duplicate voucher orders under concurrency.',
             'Provided Docker Compose deployment for the application, MySQL, Redis, and RabbitMQ.',
           ],
-        },        personalPortfolio: {
+        },
+        personalPortfolio: {
           description: 'A personal website built to showcase projects, technical skills, learning journey, and contact information.',
           keyFeatures: ['Responsive personal portfolio homepage', 'Project showcase section', 'Skills and learning journey sections', 'Light / dark theme support', 'Smooth scroll and subtle animations'],
           built: ['Built a modern portfolio website with Next.js and Tailwind CSS.', 'Designed sections for projects, skills, about, journey, and contact.', 'Added theme switching, scroll animations, and back-to-top interaction.'],
@@ -104,7 +107,7 @@ export const translations = {
     },
     about: {
       eyebrow: 'About',
-      title: 'About TianZhiJiu',
+      title: 'About Hao Xinran',
       paragraphs: [
         'I am an Artificial Intelligence student focused on Agent backend development and AI-powered web applications.',
         'I am currently learning Spring Boot, MySQL, Redis, RabbitMQ, and Docker, while exploring how LLMs can work with coding assistants, learning platforms, and backend services.',
@@ -140,7 +143,7 @@ export const translations = {
     },
     hero: {
       titleFirst: '你好，我是',
-      titleSecond: '田智久',
+      titleSecond: '郝欣冉',
       subtitle: '我专注于后端开发，也在探索 AI 工具和 Web 应用的结合。',
       cta: '查看项目',
     },
@@ -156,28 +159,31 @@ export const translations = {
       whatILearned: '学到了什么',
       items: {
         aiCodeHelper: {
-          description: '一个基于 Spring Boot 3、Vue 3 和 LangChain4j 的 AI 编程助手项目，结合 AI 对话、用户认证、会话持久化和 Hot100 刷题训练分析。',
+          description: '一个基于 Spring Boot + Vue 的 AI 编程助手项目，核心是自研 ReAct Agent Runtime，用于 Hot100 算法辅导、执行链路追踪和后端面试准备。',
           highlights: [
-            '基于 Spring Boot 3 和 Spring Security 实现用户注册、登录、JWT access/refresh token 认证和用户账户管理。',
-            '集成 LangChain4j 与 DashScope，提供 AI 对话和编程辅助能力。',
-            '设计会话与消息持久化，支持多轮 AI 对话记录管理。',
-            '构建 Hot100 题库、刷题进度、推荐、学习计划和学习分析相关 API。',
-            '使用 Flyway 管理数据库迁移，并通过 JPA schema validate 避免运行时表结构漂移。',
-            '使用 Redis 缓存 Hot100 题目读取、推荐、学习计划和标签掌握度，并在进度更新后做缓存失效。',
-            '为推荐和学习计划生成设计异步任务接口，避免重计算阻塞同步请求。',
-            '提供 Docker Compose 部署，统一启动前端、后端、MySQL、Redis 和 RabbitMQ。',
+            '自研 ReAct Agent Runtime，支持 model turn、tool_use、tool_result、final_answer 和最多 8 轮自主执行。',
+            '实现 READ、WRITE、EXTERNAL、SENSITIVE 四级工具权限门控，被拒绝的工具调用会返回结构化 tool_result，避免直接中断 Agent 流程。',
+            '加入三层上下文压缩、结构化异常恢复、事件钩子和步骤级 SSE 流式输出，让 Agent 执行过程可观察。',
+            '设计 AgentTask、RuntimeSlot、AgentStep 数据模型，支持重试、runtime trace 和执行步骤排查。',
+            '集成 LangChain4j 与 DashScope/Qwen，但将 Agent 编排逻辑保留在 Spring Boot 后端中实现。',
+            '为 Hot100 markdown 和 JSON 资源构建可解释本地 RAG，返回带评分和题目元数据的检索结果。',
+            '实现长期记忆，记录用户偏好、薄弱点、错题、下一步行动和笔记。',
+            '使用 Spring Boot 3.5、Java 21、Spring Security JWT、JPA、Flyway、Redis 缓存、RabbitMQ 和 Docker Compose 完成后端工程化。',
           ],
-        },        citylifeReview: {
-          description: '一个本地生活点评平台后端项目，重点实践 Redis 业务场景、缓存设计、GEO 附近商铺、社交 Feed 流，以及高并发优惠券秒杀下单的可靠性设计。',
+        },
+        citylifeReview: {
+          description: '一个本地生活点评平台后端服务，重点实践 Redis 业务场景、附近商铺搜索、社交 Feed 流，以及高并发优惠券秒杀下单的可靠性设计。',
           highlights: [
-            '基于 Redis 实现短信验证码登录和 token 状态存储。',
-            '使用 Redis 缓存、GEO、ZSet、Set、Bitmap 分别支持商铺缓存、附近商铺、点赞排行、关注关系、Feed 流和连续签到。',
-            '使用 Redis Lua 脚本原子校验库存和一人一单约束，减少高并发下的超卖风险。',
-            '基于 RabbitMQ 实现优惠券订单异步创建，加入 publisher confirm、return callback、手动 ACK、死信队列和超时订单补偿。',
-            '结合 Redisson 用户级锁和 MySQL 唯一索引，防止并发重复下单。',
+            '基于 Redis token 存储实现手机验证码登录，并通过拦截器维护用户上下文。',
+            '使用 Redis 缓存、缓存穿透保护、商铺类型缓存失效、GEO、ZSet、Set、Bitmap 支持商铺查询、附近商铺、点赞、关注、Feed 流和签到。',
+            '使用 Redis Lua 原子化校验优惠券库存和一人一单约束，并完成库存预扣减和购买资格记录。',
+            '基于 RabbitMQ 实现优惠券订单异步创建，包含 PROCESSING 状态持久化、publisher confirm、return callback、手动 ACK 和死信队列。',
+            '加入 Redis 回滚和超时 PROCESSING 订单定时补偿，降低 MQ 或消费者失败后的 Redis/MySQL 不一致风险。',
+            '结合 Redisson 用户级锁和 MySQL 唯一索引，防止高并发下重复下单。',
             '提供 Docker Compose 部署，统一启动应用、MySQL、Redis 和 RabbitMQ。',
           ],
-        },        personalPortfolio: {
+        },
+        personalPortfolio: {
           description: '这个网站本身，用来展示我的项目、技术方向、学习经历和联系方式。',
           keyFeatures: ['Responsive personal portfolio homepage', 'Project showcase section', 'Skills and learning journey sections', 'Light / dark theme support', 'Smooth scroll and subtle animations'],
           built: ['使用 Next.js 和 Tailwind CSS 搭建个人作品集网站。', '设计 projects、skills、about、journey 和 contact 等页面区块。', '加入 theme switching、scroll animations 和 back-to-top interaction。'],
@@ -256,6 +262,9 @@ export const translations = {
     },
   },
 } as const
+
+
+
 
 
 

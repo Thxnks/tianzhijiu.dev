@@ -10,15 +10,15 @@ const projects = [
     key: 'aiCodeHelper',
     title: 'AI Code Helper For Hot100',
     github: 'https://github.com/Thxnks/AI-Code-Helper-For-Hot100',
-    stack: ['Java', 'Spring Boot 3', 'Spring Security', 'Vue 3', 'LangChain4j', 'DashScope'],
-    fullStack: ['Java', 'Spring Boot 3', 'Spring Security', 'Vue 3', 'LangChain4j', 'DashScope', 'MySQL', 'Redis', 'RabbitMQ', 'Flyway', 'Docker'],
+    stack: ['Java 21', 'Spring Boot 3.5', 'LangChain4j', 'DashScope/Qwen', 'ReAct Agent', 'SSE'],
+    fullStack: ['Java 21', 'Spring Boot 3.5', 'Spring Security JWT', 'Vue 3', 'LangChain4j', 'DashScope/Qwen', 'MCP', 'SSE', 'RAG', 'MySQL', 'Redis', 'RabbitMQ', 'Flyway', 'Docker Compose'],
   },
   {
     key: 'citylifeReview',
     title: 'CityLife Review',
     github: 'https://github.com/Thxnks/Citylife-review',
-    stack: ['Java', 'Spring Boot', 'MyBatis-Plus', 'MySQL', 'Redis', 'RabbitMQ'],
-    fullStack: ['Java', 'Spring Boot', 'MyBatis-Plus', 'MySQL', 'Redis', 'Redisson', 'RabbitMQ', 'Lua', 'Docker'],
+    stack: ['Java 8', 'Spring Boot', 'Redis', 'RabbitMQ', 'Redisson', 'Lua'],
+    fullStack: ['Java 8', 'Spring Boot', 'MyBatis-Plus', 'MySQL', 'Redis', 'Redisson', 'RabbitMQ', 'Lua', 'Docker Compose', 'Hutool', 'Lombok'],
   },
   {
     key: 'personalPortfolio',
@@ -148,4 +148,5 @@ export function ProjectsSection() {
     </div>
   )
 }
+
 
